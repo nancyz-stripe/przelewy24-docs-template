@@ -668,19 +668,10 @@
     <!-- ===== GET STARTED ===== -->
     <section class="section" id="get-started">
       <h2 class="section-title">Get started with Przelewy24</h2>
-      <p class="section-text">
-        You don't have to integrate Przelewy24 and other payment methods individually. If you use our front-end products, Stripe automatically determines the most relevant payment methods to display. Go to the Stripe Dashboard and enable Przelewy24. To get started with one of our hosted UIs, follow a quick start:
+      <p class="section-text" style="padding-bottom: 12px;">
+        If you use our front-end products, you can enable Przelewy24 directly from your <a href="https://dashboard.stripe.com/settings/payment_methods" target="_blank" rel="noopener">payment method settings</a> – no additional integration required. Stripe then automatically determines the most relevant payment methods to display to your customers.
       </p>
-      <ul class="get-started-list">
-        <li><a href="https://docs.stripe.com/checkout/quickstart" target="_blank" rel="noopener">Checkout</a>: Our prebuilt, hosted checkout page.</li>
-        <li><a href="https://docs.stripe.com/payments/quickstart" target="_blank" rel="noopener">Elements</a>: Our drop-in UI components.</li>
-      </ul>
-      <p class="section-text">The following Stripe products also let you add Przelewy24 from the Dashboard:</p>
-      <ul class="get-started-list">
-        <li><a href="https://docs.stripe.com/invoicing/no-code-guide" target="_blank" rel="noopener">Invoicing</a></li>
-        <li><a href="https://docs.stripe.com/payment-links" target="_blank" rel="noopener">Payment Links</a></li>
-      </ul>
-      <p class="section-text mt-16">
+      <p class="section-text">
         If your integration requires manually listing payment methods, learn how to <a href="https://docs.stripe.com/payments/p24/accept-a-payment" target="_blank" rel="noopener">manually configure Przelewy24 as a payment</a>.
       </p>
     </section>
@@ -712,7 +703,17 @@
               <span class="mcc-glossary-link" id="mccGlossaryLink">merchant category codes</span>
               <div class="mcc-tooltip" id="mccTooltip">Merchant category codes (MCCs) are used to classify businesses by the type of goods or services they provide. These codes are often used for calculating interchange fees, authorizing payments, and preventing fraud.</div>
             </span>
-            that are prohibited or restricted for Przelewy24.
+            that are
+            <span class="mcc-glossary-wrapper">
+              <span class="mcc-glossary-link" id="mccProhibitedLink">prohibited</span>
+              <div class="mcc-tooltip" id="mccProhibitedTooltip">MCCs that are not supported for this payment method.</div>
+            </span>
+            or
+            <span class="mcc-glossary-wrapper">
+              <span class="mcc-glossary-link" id="mccRestrictedLink">restricted</span>
+              <div class="mcc-tooltip" id="mccRestrictedTooltip">MCCs that may be supported but require additional review or approval.</div>
+            </span>
+            for Przelewy24.
           </div>
         </div>
         <button class="mcc-dialog-close" id="mccCloseBtn" aria-label="Close">
@@ -976,6 +977,26 @@
   });
   glossaryLink.addEventListener('mouseleave', function () {
     tooltip.classList.remove('visible');
+  });
+
+  // Prohibited tooltip
+  var prohibitedLink = document.getElementById('mccProhibitedLink');
+  var prohibitedTooltip = document.getElementById('mccProhibitedTooltip');
+  prohibitedLink.addEventListener('mouseenter', function () {
+    prohibitedTooltip.classList.add('visible');
+  });
+  prohibitedLink.addEventListener('mouseleave', function () {
+    prohibitedTooltip.classList.remove('visible');
+  });
+
+  // Restricted tooltip
+  var restrictedLink = document.getElementById('mccRestrictedLink');
+  var restrictedTooltip = document.getElementById('mccRestrictedTooltip');
+  restrictedLink.addEventListener('mouseenter', function () {
+    restrictedTooltip.classList.add('visible');
+  });
+  restrictedLink.addEventListener('mouseleave', function () {
+    restrictedTooltip.classList.remove('visible');
   });
 
   // Payment flow tabs
