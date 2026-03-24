@@ -276,7 +276,12 @@
         </tr>
         <tr>
           <td class="label-col">Usability</td>
-          <td class="value-col">Single-use</td>
+          <td class="value-col">
+            <span class="mcc-glossary-wrapper">
+              <span class="mcc-glossary-link" id="singleUseLink">Single-use</span>
+              <div class="mcc-tooltip" id="singleUseTooltip">Single-use payment methods (for example, some kinds of bank transfers) can't be attached to customers because they're consumed after a payment attempt. <a href="https://docs.stripe.com/payments/payment-methods#usage" target="_blank" rel="noopener">Learn more</a></div>
+            </span>
+          </td>
         </tr>
         <tr>
           <td class="label-col">Requires mandate</td>
@@ -288,7 +293,12 @@
         </tr>
         <tr>
           <td class="label-col">Payment confirmation timing</td>
-          <td class="value-col">Immediate</td>
+          <td class="value-col">
+            <span class="mcc-glossary-wrapper">
+              <span class="mcc-glossary-link" id="immediateLink">Immediate</span>
+              <div class="mcc-tooltip" id="immediateTooltip">Payment status is immediately returned when a transaction is attempted. PaymentIntent status either changes to succeeded or requires_payment_method. A status of succeeded guarantees that you'll receive the funds from your customers. <a href="https://docs.stripe.com/payments/payment-methods#payment-notification" target="_blank" rel="noopener">Learn more</a></div>
+            </span>
+          </td>
         </tr>
         <tr>
           <td class="label-col">Payout timing</td>
@@ -996,6 +1006,26 @@
   });
   restrictedLink.addEventListener('mouseleave', function () {
     restrictedTooltip.classList.remove('visible');
+  });
+
+  // Single-use tooltip
+  var singleUseLink = document.getElementById('singleUseLink');
+  var singleUseTooltip = document.getElementById('singleUseTooltip');
+  singleUseLink.addEventListener('mouseenter', function () {
+    singleUseTooltip.classList.add('visible');
+  });
+  singleUseLink.addEventListener('mouseleave', function () {
+    singleUseTooltip.classList.remove('visible');
+  });
+
+  // Immediate tooltip
+  var immediateLink = document.getElementById('immediateLink');
+  var immediateTooltip = document.getElementById('immediateTooltip');
+  immediateLink.addEventListener('mouseenter', function () {
+    immediateTooltip.classList.add('visible');
+  });
+  immediateLink.addEventListener('mouseleave', function () {
+    immediateTooltip.classList.remove('visible');
   });
 
   // Payment flow tabs
