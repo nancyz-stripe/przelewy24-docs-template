@@ -977,55 +977,26 @@
     renderRows(this.value);
   });
 
-  // Glossary tooltip
-  var glossaryLink = document.getElementById('mccGlossaryLink');
-  var tooltip = document.getElementById('mccTooltip');
+  // Glossary tooltips — stay visible when hovering on the tooltip itself
+  document.querySelectorAll('.mcc-glossary-wrapper').forEach(function (wrapper) {
+    var link = wrapper.querySelector('.mcc-glossary-link');
+    var tip = wrapper.querySelector('.mcc-tooltip');
+    var hideTimeout;
 
-  glossaryLink.addEventListener('mouseenter', function () {
-    tooltip.classList.add('visible');
-  });
-  glossaryLink.addEventListener('mouseleave', function () {
-    tooltip.classList.remove('visible');
-  });
+    function show() {
+      clearTimeout(hideTimeout);
+      tip.classList.add('visible');
+    }
+    function hide() {
+      hideTimeout = setTimeout(function () {
+        tip.classList.remove('visible');
+      }, 100);
+    }
 
-  // Prohibited tooltip
-  var prohibitedLink = document.getElementById('mccProhibitedLink');
-  var prohibitedTooltip = document.getElementById('mccProhibitedTooltip');
-  prohibitedLink.addEventListener('mouseenter', function () {
-    prohibitedTooltip.classList.add('visible');
-  });
-  prohibitedLink.addEventListener('mouseleave', function () {
-    prohibitedTooltip.classList.remove('visible');
-  });
-
-  // Restricted tooltip
-  var restrictedLink = document.getElementById('mccRestrictedLink');
-  var restrictedTooltip = document.getElementById('mccRestrictedTooltip');
-  restrictedLink.addEventListener('mouseenter', function () {
-    restrictedTooltip.classList.add('visible');
-  });
-  restrictedLink.addEventListener('mouseleave', function () {
-    restrictedTooltip.classList.remove('visible');
-  });
-
-  // Single-use tooltip
-  var singleUseLink = document.getElementById('singleUseLink');
-  var singleUseTooltip = document.getElementById('singleUseTooltip');
-  singleUseLink.addEventListener('mouseenter', function () {
-    singleUseTooltip.classList.add('visible');
-  });
-  singleUseLink.addEventListener('mouseleave', function () {
-    singleUseTooltip.classList.remove('visible');
-  });
-
-  // Immediate tooltip
-  var immediateLink = document.getElementById('immediateLink');
-  var immediateTooltip = document.getElementById('immediateTooltip');
-  immediateLink.addEventListener('mouseenter', function () {
-    immediateTooltip.classList.add('visible');
-  });
-  immediateLink.addEventListener('mouseleave', function () {
-    immediateTooltip.classList.remove('visible');
+    link.addEventListener('mouseenter', show);
+    link.addEventListener('mouseleave', hide);
+    tip.addEventListener('mouseenter', show);
+    tip.addEventListener('mouseleave', hide);
   });
 
   // Payment flow tabs

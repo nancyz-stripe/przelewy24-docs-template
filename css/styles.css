@@ -1030,7 +1030,7 @@ ul {
 /* MCC Glossary Tooltip */
 .mcc-glossary-wrapper {
   position: relative;
-  display: inline;
+  display: inline-block;
 }
 .mcc-glossary-link {
   color: #566cd6;
@@ -1048,7 +1048,8 @@ ul {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: calc(100% + 10px);
+  top: calc(100% + 8px);
+  padding-top: 0;
   width: 300px;
   background: #fff;
   border: 1px solid #d8dee4;
