@@ -755,10 +755,13 @@ ul {
 }
 .label-col a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .label-col a:hover {
   color: #533afd;
+}
+.additional-info[id] {
+  scroll-margin-top: 110px;
 }
 .additional-info-title {
   font-size: 14px;
