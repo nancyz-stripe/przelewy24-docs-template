@@ -463,7 +463,6 @@ ul {
   border-spacing: 0;
   margin-bottom: 24px;
   border-radius: 4px;
-  overflow: hidden;
 }
 .feature-table tr:first-child .label-col {
   border-top-left-radius: 4px;
