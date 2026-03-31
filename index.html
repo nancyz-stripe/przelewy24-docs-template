@@ -686,6 +686,14 @@
           </div>
         </div>
       </div>
+
+      <div class="additional-info" style="margin-top: 24px;">
+        <p class="additional-info-title">Transaction Identifiers</p>
+        <p class="additional-info-small">After a customer completes a Przelewy24 payment, the transaction appears on their bank statement. The statement entry includes a unique Przelewy24 reference number followed by your statement descriptor, in the format:</p>
+        <p class="additional-info-small" style="margin-top: 12px; font-family: monospace; padding-left: 8px;">/OPT/X/////P24-XXX-XXX-XXX {your statement descriptor}</p>
+        <p class="additional-info-small" style="margin-top: 12px;">You can set a custom statement descriptor of up to 14 characters on the PaymentIntent. If you don't set one, the descriptor defaults to "STRIPE POLAND."</p>
+        <p class="additional-info-small" style="margin-top: 12px;">The Przelewy24 reference number is available on the PaymentIntent under p24[reference]. You can share this with customers to help them locate the payment on their bank statement.</p>
+      </div>
     </section>
 
     <!-- ===== GET STARTED ===== -->
