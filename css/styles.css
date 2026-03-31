@@ -910,6 +910,22 @@ ul {
   text-decoration: none;
   border-bottom-color: #566cd6;
 }
+.mcc-dialog-legend {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: #596171;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+}
+.mcc-dialog-legend li {
+  margin-bottom: 4px;
+}
+.mcc-dialog-legend strong {
+  font-weight: 600;
+  color: #596171;
+}
 .mcc-dialog-close {
   width: 28px;
   height: 28px;
