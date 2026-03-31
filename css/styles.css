@@ -763,11 +763,33 @@ ul {
   scroll-margin-top: 110px;
 }
 .additional-info-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #353a44;
+  margin-bottom: 8px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
+}
+.additional-info-subtitle {
   font-size: 14px;
   font-weight: 600;
   color: #353a44;
   margin-bottom: 8px;
-  line-height: 24px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+}
+.additional-info-small {
+  font-size: 14px;
+  color: #596171;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+}
+.additional-info-small a {
+  color: #533afd;
+  text-decoration: none;
+}
+.additional-info-small a:hover {
+  text-decoration: underline;
 }
 .additional-info-text {
   font-size: 16px;
