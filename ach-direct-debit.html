@@ -339,21 +339,21 @@
           </svg>
           <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Settlement and timing</h3>
         </div>
-        <div class="collapsible-content" id="settlementContent" style="display: none; padding-left: 32px; margin-top: 8px;">
-          <p class="additional-info-small" style="color: #1a2c44;">ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.</p>
+        <div class="collapsible-content" id="settlementContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.</p>
 
-          <div class="additional-info">
+          <div style="margin-top: 16px;">
             <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">How settlement work</p>
-            <p class="additional-info-small">When a customer completes an ACH payment, the PaymentIntent status moves to processing. During this window, the bank can reject the debit for reasons such as insufficient funds, an invalid account, or a disabled account. If the payment succeeds, the status changes to succeeded.</p>
-            <p class="additional-info-small" style="margin-top: 12px;">Because of the delayed confirmation, avoid fulfilling orders until the payment status reaches succeeded. If a payment fails after being initially accepted, Stripe removes the funds from your Stripe balance.</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">When a customer completes an ACH payment, the PaymentIntent status moves to processing. During this window, the bank can reject the debit for reasons such as insufficient funds, an invalid account, or a disabled account. If the payment succeeds, the status changes to succeeded.</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Because of the delayed confirmation, avoid fulfilling orders until the payment status reaches succeeded. If a payment fails after being initially accepted, Stripe removes the funds from your Stripe balance.</p>
           </div>
 
-          <div class="additional-info">
+          <div style="margin-top: 16px;">
             <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Bank account verification</p>
-            <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods:</p>
-            <ul class="additional-info-list" style="margin-top: 4px;">
-              <li class="additional-info-small">Instant verification — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures.</li>
-              <li class="additional-info-small">Microdeposits — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</li>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods:</p>
+            <ul style="list-style: disc; padding-left: 24px; margin-top: 4px;">
+              <li style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Instant verification — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener" style="color: #533afd;">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures.</li>
+              <li style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Microdeposits — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</li>
             </ul>
           </div>
         </div>
