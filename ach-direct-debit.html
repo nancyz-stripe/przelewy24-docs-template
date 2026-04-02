@@ -681,7 +681,8 @@
         <div class="tab" data-tab="desktop">Desktop</div>
       </div>
 
-      <div class="payment-flow">
+      <!-- Mobile layout: side-by-side -->
+      <div class="payment-flow" id="flowMobileLayout">
         <div class="payment-flow-steps">
           <div class="payment-flow-step">
             <div class="payment-flow-step-header">
@@ -719,8 +720,7 @@
             <p class="payment-flow-step-text">Customer is notified that the payment is complete once the bank confirms the debit.</p>
           </div>
         </div>
-
-        <div class="payment-flow-image" id="flowMobile">
+        <div class="payment-flow-image">
           <div class="phone-mockup" style="background: #f5f6f8; display: flex; align-items: center; justify-content: center;">
             <div style="text-align: center; padding: 16px;">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin-bottom: 8px;">
@@ -733,18 +733,58 @@
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="payment-flow-image" id="flowDesktop" style="display:none;">
-          <div class="desktop-mockup" style="background: #f5f6f8; display: flex; align-items: center; justify-content: center;">
+      <!-- Desktop layout: image on top, steps below -->
+      <div class="payment-flow desktop-layout" id="flowDesktopLayout" style="display:none;">
+        <div class="payment-flow-image">
+          <div class="desktop-mockup" style="background: #f5f6f8; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border: none;">
             <div style="text-align: center; padding: 16px;">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin-bottom: 8px;">
+              <svg width="64" height="64" viewBox="0 0 48 48" fill="none" style="margin-bottom: 8px;">
                 <rect x="4" y="8" width="40" height="32" rx="3" stroke="#687385" stroke-width="2" fill="none"/>
                 <path d="M4 16h40" stroke="#687385" stroke-width="2"/>
                 <circle cx="24" cy="30" r="6" stroke="#687385" stroke-width="2" fill="none"/>
                 <path d="M22 30l2 2 4-4" stroke="#687385" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <div style="font-size: 11px; color: #687385; line-height: 14px;">ACH Direct Debit<br>payment flow</div>
+              <div style="font-size: 14px; color: #687385; line-height: 20px;">ACH Direct Debit<br>payment flow</div>
             </div>
+          </div>
+        </div>
+        <div class="payment-flow-steps">
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">1</div>
+              <span class="payment-flow-step-title">Select payment method</span>
+            </div>
+            <p class="payment-flow-step-text">Customer selects ACH Direct Debit at checkout.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">2</div>
+              <span class="payment-flow-step-title">Authenticate bank account</span>
+            </div>
+            <p class="payment-flow-step-text">Customer authenticates with their bank via Financial Connections or enters account details for microdeposit verification.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">3</div>
+              <span class="payment-flow-step-title">Accept mandate</span>
+            </div>
+            <p class="payment-flow-step-text">Customer reviews and accepts the mandate authorizing debits from their bank account.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">4</div>
+              <span class="payment-flow-step-title">Payment processing</span>
+            </div>
+            <p class="payment-flow-step-text">Payment enters processing. Confirmation is delayed up to 4 business days while the bank verifies funds.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">5</div>
+              <span class="payment-flow-step-title">Payment complete</span>
+            </div>
+            <p class="payment-flow-step-text">Customer is notified that the payment is complete once the bank confirms the debit.</p>
           </div>
         </div>
       </div>
@@ -991,19 +1031,19 @@
 
   // Payment flow tabs
   var tabs = document.querySelectorAll('.tabs .tab');
-  var flowMobile = document.getElementById('flowMobile');
-  var flowDesktop = document.getElementById('flowDesktop');
+  var flowMobileLayout = document.getElementById('flowMobileLayout');
+  var flowDesktopLayout = document.getElementById('flowDesktopLayout');
 
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
       tabs.forEach(function (t) { t.classList.remove('active'); });
       tab.classList.add('active');
       if (tab.getAttribute('data-tab') === 'desktop') {
-        flowMobile.style.display = 'none';
-        flowDesktop.style.display = '';
+        flowMobileLayout.style.display = 'none';
+        flowDesktopLayout.style.display = '';
       } else {
-        flowMobile.style.display = '';
-        flowDesktop.style.display = 'none';
+        flowMobileLayout.style.display = '';
+        flowDesktopLayout.style.display = 'none';
       }
     });
   });

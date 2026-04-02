@@ -688,7 +688,8 @@
         <div class="tab" data-tab="desktop">Desktop</div>
       </div>
 
-      <div class="payment-flow">
+      <!-- Mobile layout: side-by-side -->
+      <div class="payment-flow" id="flowMobileLayout">
         <div class="payment-flow-steps">
           <div class="payment-flow-step">
             <div class="payment-flow-step-header">
@@ -719,16 +720,48 @@
             <p class="payment-flow-step-text">Customer returns back to business's site for payment confirmation.</p>
           </div>
         </div>
-
-        <div class="payment-flow-image" id="flowMobile">
+        <div class="payment-flow-image">
           <div class="phone-mockup">
             <img src="assets/payment-flow-phone.png" alt="Przelewy24 payment flow on mobile">
           </div>
         </div>
+      </div>
 
-        <div class="payment-flow-image" id="flowDesktop" style="display:none;">
+      <!-- Desktop layout: image on top, steps below -->
+      <div class="payment-flow desktop-layout" id="flowDesktopLayout" style="display:none;">
+        <div class="payment-flow-image">
           <div class="desktop-mockup">
             <img src="assets/payment-flow-desktop.png" alt="Przelewy24 payment flow on desktop">
+          </div>
+        </div>
+        <div class="payment-flow-steps">
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">1</div>
+              <span class="payment-flow-step-title">Select payment method</span>
+            </div>
+            <p class="payment-flow-step-text">Customer selects Przelewy24 at checkout and selects corresponding bank.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">2</div>
+              <span class="payment-flow-step-title">Redirect to Przelewy24</span>
+            </div>
+            <p class="payment-flow-step-text">Customer is redirected to Przelewy24 and is asked to enter account credentials to completes authorization process.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">3</div>
+              <span class="payment-flow-step-title">Payment complete</span>
+            </div>
+            <p class="payment-flow-step-text">Customer is notified that payment is complete.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">4</div>
+              <span class="payment-flow-step-title">Returns to original site</span>
+            </div>
+            <p class="payment-flow-step-text">Customer returns back to business's site for payment confirmation.</p>
           </div>
         </div>
       </div>
@@ -1069,19 +1102,19 @@
 
   // Payment flow tabs
   var tabs = document.querySelectorAll('.tabs .tab');
-  var flowMobile = document.getElementById('flowMobile');
-  var flowDesktop = document.getElementById('flowDesktop');
+  var flowMobileLayout = document.getElementById('flowMobileLayout');
+  var flowDesktopLayout = document.getElementById('flowDesktopLayout');
 
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
       tabs.forEach(function (t) { t.classList.remove('active'); });
       tab.classList.add('active');
       if (tab.getAttribute('data-tab') === 'desktop') {
-        flowMobile.style.display = 'none';
-        flowDesktop.style.display = '';
+        flowMobileLayout.style.display = 'none';
+        flowDesktopLayout.style.display = '';
       } else {
-        flowMobile.style.display = '';
-        flowDesktop.style.display = 'none';
+        flowMobileLayout.style.display = '';
+        flowDesktopLayout.style.display = 'none';
       }
     });
   });
