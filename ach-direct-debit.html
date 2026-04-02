@@ -318,7 +318,7 @@
           <td class="value-col">
             <span class="mcc-glossary-wrapper">
               <span class="mcc-glossary-link" id="delayedLink">Delayed</span>
-              <div class="mcc-tooltip" id="delayedTooltip">Delayed notification payment methods take time to confirm whether the payment was successful. PaymentIntent status changes to processing and then eventually to succeeded or requires_payment_method. You shouldn't fulfill orders until the payment status reaches succeeded. <a href="https://docs.stripe.com/payments/payment-methods#payment-notification" target="_blank" rel="noopener">Learn more</a></div>
+              <div class="mcc-tooltip" id="delayedTooltip">Payment confirmation isn't immediate. The payment stays in a pending state until the customer's bank or payment provider confirms it. It's recommended to configure <a href="https://docs.stripe.com/payments/payment-methods#webhooks" target="_blank" rel="noopener">webhook endpoints</a> for notifications on whether a payment has succeeded or not. <a href="https://docs.stripe.com/payments/payment-methods#payment-notification" target="_blank" rel="noopener">Learn more</a></div>
             </span>
           </td>
         </tr>
@@ -333,7 +333,7 @@
       </table>
 
       <!-- Settlement and timing subsection -->
-      <h3 class="section-subtitle" style="margin-top: 24px;">Settlement and timing</h3>
+      <h3 class="section-subtitle" style="margin-top: 24px; font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Settlement and timing</h3>
       <p class="section-text">
         ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.
       </p>
@@ -362,7 +362,11 @@
 
       <div class="additional-info">
         <p class="additional-info-subtitle">Bank account verification</p>
-        <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods: Instant verification — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures. Microdeposits — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</p>
+        <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods:</p>
+        <ul class="additional-info-list" style="margin-top: 8px;">
+          <li class="additional-info-small">Instant verification — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures.</li>
+          <li class="additional-info-small">Microdeposits — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</li>
+        </ul>
       </div>
     </section>
 
