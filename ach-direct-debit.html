@@ -636,25 +636,18 @@
 
       <!-- Mandates subsection -->
       <div class="mt-32" id="mandates">
-        <h3 class="section-subtitle" style="font-size: 20px; line-height: 28px;">Mandates</h3>
-        <p class="section-text">
-          To debit a customer's bank account with ACH, you must first obtain their authorization through a mandate. A mandate is a record of the permission that a customer gives you to debit their bank account.
-        </p>
-        <p class="section-text">
-          Stripe handles mandate collection as part of the payment flow when you use Checkout, Payment Links, or the Payment Element. The customer reviews the mandate terms and accepts them during the payment process. After the customer authorizes the mandate, Stripe sends a confirmation email to the customer per Nacha compliance requirements.
-        </p>
+        <h3 style="font-size: 20px; font-weight: 700; color: #353a44; line-height: 28px; letter-spacing: 0.3px; margin-bottom: 8px;">Mandates</h3>
+        <p class="additional-info-small">To debit a customer's bank account with ACH, you must first obtain their authorization through a mandate. A mandate is a record of the permission that a customer gives you to debit their bank account.</p>
+        <p class="additional-info-small" style="margin-top: 12px;">Stripe handles mandate collection as part of the payment flow when you use Checkout, Payment Links, or the Payment Element. The customer reviews the mandate terms and accepts them during the payment process. After the customer authorizes the mandate, Stripe sends a confirmation email to the customer per Nacha compliance requirements.</p>
 
         <div class="additional-info">
           <p class="additional-info-subtitle">Mandate types</p>
           <p class="additional-info-small">ACH supports both online and offline mandates:</p>
-          <ul class="additional-info-list" style="margin-top: 8px;">
-            <li class="additional-info-small"><strong>Online mandates</strong> — Collected digitally through your payment flow. Stripe manages these automatically when using Checkout, Payment Links, or the Payment Element.</li>
-            <li class="additional-info-small"><strong>Offline mandates</strong> — Collected through paper forms or phone calls. If you collect mandates offline, you're responsible for storing the authorization and providing it if a dispute arises.</li>
+          <ul class="additional-info-list" style="margin-top: 4px;">
+            <li class="additional-info-small">Online mandates — Collected digitally through your payment flow. Stripe manages these automatically when using Checkout, Payment Links, or the Payment Element.</li>
+            <li class="additional-info-small">Offline mandates — Collected through paper forms or phone calls. If you collect mandates offline, you're responsible for storing the authorization and providing it if a dispute arises.</li>
           </ul>
-        </div>
-
-        <div class="additional-info">
-          <p class="additional-info-small">For detailed information on mandate requirements, verification methods, and compliance considerations, see the <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener">Accept a payment</a> guide.</p>
+          <p class="additional-info-small" style="margin-top: 12px;">For detailed information on mandate requirements, verification methods, and compliance considerations, see the <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener">Accept a payment</a> guide.</p>
         </div>
       </div>
     </section>
