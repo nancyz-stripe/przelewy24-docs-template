@@ -759,6 +759,13 @@ ul {
 .label-col a:hover {
   color: #533afd;
 }
+.label-col .mcc-glossary-link {
+  color: #566cd6;
+  font-weight: 600;
+}
+.label-col .mcc-glossary-link:hover {
+  color: #566cd6;
+}
 .additional-info[id] {
   scroll-margin-top: 110px;
 }
