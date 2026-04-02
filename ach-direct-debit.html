@@ -271,16 +271,16 @@
           <a href="#overview" class="overflow-popover-item">Overview</a>
           <a href="#eligibility" class="overflow-popover-item">Eligibility and availability</a>
           <a href="#capabilities" class="overflow-popover-item">Capabilities</a>
+          <a href="#stripe-support" class="overflow-popover-item">Stripe support</a>
           <a href="#mandates" class="overflow-popover-item">Mandates</a>
-          <a href="#settlement" class="overflow-popover-item">Settlement and timing</a>
-          <a href="#payment-flow" class="overflow-popover-item">Payment flow</a>
-          <a href="#get-started" class="overflow-popover-item">Get started</a>
+          <a href="#buyer-experience" class="overflow-popover-item">Buyer experience</a>
+          <a href="#enable" class="overflow-popover-item">Enable ACH Direct Debit</a>
         </div>
       </div>
     </div>
 
     <!-- Page Title -->
-    <h1 class="page-title">ACH Direct Debit payments</h1>
+    <h1 class="page-title">ACH Direct Debit</h1>
     <p class="page-subtitle">Accept payments by debiting your US customers' bank accounts.</p>
 
     <!-- ===== OVERVIEW ===== -->
@@ -323,14 +323,47 @@
           </td>
         </tr>
         <tr>
-          <td class="label-col">Payout timing</td>
-          <td class="value-col">Standard: 4 business days (T+4) &middot; Faster: 2 business days (T+2)</td>
+          <td class="label-col">Settlement timing</td>
+          <td class="value-col">Standard: 4 business days (T+4)<br>Faster: 2 business days (T+2)</td>
         </tr>
         <tr>
           <td class="label-col">Pricing</td>
           <td class="value-col"><a href="https://stripe.com/pricing/local-payment-methods#ach-direct-debit" target="_blank" rel="noopener">View pricing details</a></td>
         </tr>
       </table>
+
+      <!-- Settlement and timing subsection -->
+      <h3 class="section-subtitle" style="margin-top: 24px;">Settlement and timing</h3>
+      <p class="section-text">
+        ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.
+      </p>
+
+      <table class="feature-table">
+        <tr>
+          <td class="label-col">Standard settlement</td>
+          <td class="value-col">
+            T+4: 4 business days<br>
+            Cutoff: 21:00 ET
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Faster settlement</td>
+          <td class="value-col">
+            T+2: 2 business days<br>
+            Cutoff: 14:00 ET (Eligibility required)
+          </td>
+        </tr>
+      </table>
+
+      <div class="additional-info">
+        <p class="additional-info-subtitle">How settlement work</p>
+        <p class="additional-info-small">When a customer completes an ACH payment, the PaymentIntent status moves to processing. During this window, the bank can reject the debit for reasons such as insufficient funds, an invalid account, or a disabled account. If the payment succeeds, the status changes to succeeded. Because of the delayed confirmation, avoid fulfilling orders until the payment status reaches succeeded. If a payment fails after being initially accepted, Stripe removes the funds from your Stripe balance.</p>
+      </div>
+
+      <div class="additional-info">
+        <p class="additional-info-subtitle">Bank account verification</p>
+        <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods: Instant verification — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures. Microdeposits — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</p>
+      </div>
     </section>
 
     <!-- ===== ELIGIBILITY AND AVAILABILITY ===== -->
@@ -378,8 +411,8 @@
           </td>
         </tr>
         <tr>
-          <td class="label-col">Required capability</td>
-          <td class="value-col"><code style="font-size: 14px; background: #f5f6f8; padding: 2px 6px; border-radius: 4px; color: #596171;">us_bank_account_ach_payments</code></td>
+          <td class="label-col">Business category</td>
+          <td class="value-col"><a href="#">View list of prohibited and restricted business categories</a></td>
         </tr>
       </table>
 
@@ -418,7 +451,7 @@
           </tr>
           <tr>
             <td class="label-col">Transaction limits</td>
-            <td class="value-col">US$0.50 minimum</td>
+            <td class="value-col">US$0.50 - US$999,999.99</td>
           </tr>
         </table>
       </div>
@@ -444,23 +477,7 @@
           <td class="value-col">
             <div class="x-item">
               <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Extended authorizations
-            </div>
-            <div class="x-item">
-              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Flexible extended authorizations
-            </div>
-            <div class="x-item">
-              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Incremental authorizations
-            </div>
-            <div class="x-item">
-              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Decremental authorizations
-            </div>
-            <div class="x-item">
-              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Re-authorizations
+              Not available
             </div>
           </td>
         </tr>
@@ -469,19 +486,7 @@
           <td class="value-col">
             <div class="x-item">
               <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Manual capture
-            </div>
-            <div class="x-item">
-              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Partial capture
-            </div>
-            <div class="x-item">
-              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Multi-capture
-            </div>
-            <div class="x-item">
-              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-              Over-capture
+              Not available
             </div>
           </td>
         </tr>
@@ -497,7 +502,7 @@
               Full refunds
             </div>
             <div class="table-separator"></div>
-            <div class="table-detail">Filing window: 180 days</div>
+            <div class="table-detail">Submission window: 180 days</div>
             <div class="table-detail">Processing time: 3+ business days</div>
           </td>
         </tr>
@@ -571,7 +576,15 @@
             </div>
             <div class="check-item">
               <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Express Checkout Element
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               Mobile Payment Element
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Express Payment Element
             </div>
             <div class="check-item">
               <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -643,49 +656,9 @@
       </div>
     </section>
 
-    <!-- ===== SETTLEMENT AND TIMING ===== -->
-    <section class="section" id="settlement">
-      <h2 class="section-title">Settlement and timing</h2>
-      <p class="section-text">
-        ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.
-      </p>
-
-      <table class="feature-table">
-        <tr>
-          <td class="label-col">Standard settlement</td>
-          <td class="value-col">
-            <strong>T+4</strong> — 4 business days<br>
-            <span style="color: #687385; font-size: 14px;">Cutoff: 21:00 US/Eastern</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="label-col">Faster settlement</td>
-          <td class="value-col">
-            <strong>T+2</strong> — 2 business days<br>
-            <span style="color: #687385; font-size: 14px;">Cutoff: 14:00 US/Eastern &middot; Eligibility required</span>
-          </td>
-        </tr>
-      </table>
-
-      <div class="additional-info">
-        <p class="additional-info-subtitle">How settlement works</p>
-        <p class="additional-info-small">When a customer completes an ACH payment, the PaymentIntent status moves to <code style="font-size: 13px; background: #f5f6f8; padding: 1px 4px; border-radius: 3px;">processing</code>. During this window, the bank can reject the debit for reasons such as insufficient funds, an invalid account, or a disabled account. If the payment succeeds, the status changes to <code style="font-size: 13px; background: #f5f6f8; padding: 1px 4px; border-radius: 3px;">succeeded</code>.</p>
-        <p class="additional-info-small" style="margin-top: 12px;">Because of the delayed confirmation, avoid fulfilling orders until the payment status reaches <code style="font-size: 13px; background: #f5f6f8; padding: 1px 4px; border-radius: 3px;">succeeded</code>. If a payment fails after being initially accepted, Stripe removes the funds from your Stripe balance.</p>
-      </div>
-
-      <div class="additional-info">
-        <p class="additional-info-subtitle">Bank account verification</p>
-        <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods:</p>
-        <ul class="additional-info-list" style="margin-top: 8px;">
-          <li class="additional-info-small"><strong>Instant verification</strong> — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures.</li>
-          <li class="additional-info-small"><strong>Microdeposits</strong> — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== PAYMENT FLOW ===== -->
-    <section class="section" id="payment-flow">
-      <h2 class="section-title">Payment flow</h2>
+    <!-- ===== BUYER EXPERIENCE ===== -->
+    <section class="section" id="buyer-experience">
+      <h2 class="section-title">Buyer experience</h2>
 
       <div class="tabs">
         <div class="tab active" data-tab="mobile">Mobile</div>
@@ -768,8 +741,8 @@
     </section>
 
     <!-- ===== GET STARTED ===== -->
-    <section class="section" id="get-started">
-      <h2 class="section-title">Get started with ACH Direct Debit</h2>
+    <section class="section" id="enable">
+      <h2 class="section-title">Enable ACH Direct Debit</h2>
       <p class="section-text" style="padding-bottom: 12px;">
         If you use our front-end products, you can enable ACH Direct Debit directly from your <a href="https://dashboard.stripe.com/settings/payment_methods" target="_blank" rel="noopener">payment method settings</a> — no additional integration required. Stripe then automatically determines the most relevant payment methods to display to your customers.
       </p>
@@ -787,10 +760,10 @@
     <a href="#overview">Overview</a>
     <a href="#eligibility">Eligibility and availability</a>
     <a href="#capabilities">Capabilities</a>
+    <a href="#stripe-support">Stripe support</a>
     <a href="#mandates">Mandates</a>
-    <a href="#settlement">Settlement and timing</a>
-    <a href="#payment-flow">Payment flow</a>
-    <a href="#get-started">Get started</a>
+    <a href="#buyer-experience">Buyer experience</a>
+    <a href="#enable">Enable ACH Direct Debit</a>
   </aside>
 </div>
 
