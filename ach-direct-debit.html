@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACH Direct Debit payments | Stripe Documentation</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/icons.css">
+</head>
+<body>
+
+<!-- ========================= HEADER ========================= -->
+<header class="header">
+  <div class="header-top">
+    <div class="logo">
+      <img src="assets/stripe-docs-logo.svg" alt="Stripe Docs" height="25">
+    </div>
+
+    <div class="search-bar">
+      <svg class="search-icon" viewBox="0 0 12 12" fill="none">
+        <circle cx="5" cy="5" r="4" stroke="#687385" stroke-width="1.5"/>
+        <line x1="8" y1="8" x2="11" y2="11" stroke="#687385" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input type="text" placeholder="Search documentation...">
+    </div>
+
+    <div class="header-account">
+      <span class="header-account-name">Llama Canada</span>
+      <div class="header-account-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 2L10 6H14L11 9L12 13L8 11L4 13L5 9L2 6H6L8 2Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-nav">
+    <div class="nav-links">
+      <a href="#">Get started</a>
+      <a href="#" class="active">Payments</a>
+      <a href="#">Finance operations</a>
+      <a href="#">Platforms and marketplaces</a>
+      <a href="#">Banking as a service</a>
+      <a href="#">Developer tools</a>
+    </div>
+    <div class="header-right-links">
+      <a href="#">APIs and SDKs</a>
+      <a href="#">Help</a>
+      <a href="#">Dashboard</a>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- ========================= LEFT SIDEBAR ========================= -->
+  <nav class="sidebar">
+    <div class="sidebar-content">
+      <div class="sidebar-section-title">PAYMENT METHODS</div>
+
+      <div class="sidebar-parent">
+        <svg class="chevron" width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 2L4 5L7 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Add payment methods
+      </div>
+
+      <div class="sidebar-child">
+        <a href="#">Overview</a>
+        <a href="#">Payment method integration options</a>
+        <a href="#">Manage default payment methods in the Dashboard</a>
+        <div class="sub-title">PAYMENT METHOD TYPES</div>
+      </div>
+
+      <!-- Payment method type items -->
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Cards
+      </div>
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 2L4 5L7 2" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Bank debits
+      </div>
+
+      <!-- Bank debits sub-items -->
+      <div class="sidebar-item level-2 active">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 2L4 5L7 2" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        ACH Direct Debit
+      </div>
+
+      <!-- ACH Direct Debit sub-pages -->
+      <div class="sidebar-sub-items">
+        <a href="#overview" class="active">Overview</a>
+        <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener">Accept a payment</a>
+      </div>
+
+      <div class="sidebar-item level-2">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Bacs Direct Debit
+      </div>
+      <div class="sidebar-item level-2">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Pre-authorized debits in Canada
+      </div>
+      <div class="sidebar-item level-2">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        SEPA Direct Debit
+      </div>
+
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Bank redirects
+      </div>
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Bank transfers
+      </div>
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Credit transfers (Sources)
+      </div>
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Buy now, pay later
+      </div>
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Real-time payments
+      </div>
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Vouchers
+      </div>
+      <div class="sidebar-item level-1">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Wallets
+      </div>
+      <div class="sidebar-item level-1 align-top">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Enable local payment methods by country
+      </div>
+
+      <div class="sidebar-item nav-bold">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Manage payment methods
+      </div>
+      <div class="sidebar-item nav-bold nav-section-last">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Faster checkout with Link
+      </div>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-title">PAYMENT INTERFACES</div>
+      <div class="sidebar-item nav-bold">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Payment Links
+      </div>
+      <div class="sidebar-item nav-bold">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Checkout
+      </div>
+      <div class="sidebar-item nav-bold">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Web Elements
+      </div>
+      <div class="sidebar-item nav-bold nav-section-last">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        In-app Elements
+      </div>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-title">PAYMENT SCENARIOS</div>
+      <div class="sidebar-item nav-bold">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Custom payment flows
+      </div>
+      <div class="sidebar-item nav-bold nav-section-last">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Flexible acquiring
+      </div>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-title">IN-PERSON PAYMENTS</div>
+      <div class="sidebar-item nav-bold">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Terminal
+      </div>
+    </div>
+
+    <!-- Sidebar footer -->
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-divider"></div>
+      <div class="sidebar-footer-item">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+          <rect width="16" height="12" rx="1" fill="#B22234"/>
+          <rect y="1" width="16" height="0.92" fill="white"/>
+          <rect y="2.85" width="16" height="0.92" fill="white"/>
+          <rect y="4.69" width="16" height="0.92" fill="white"/>
+          <rect y="6.54" width="16" height="0.92" fill="white"/>
+          <rect y="8.38" width="16" height="0.92" fill="white"/>
+          <rect y="10.23" width="16" height="0.92" fill="white"/>
+          <rect width="6.4" height="6.46" fill="#3C3B6E"/>
+        </svg>
+        United States
+      </div>
+      <div class="sidebar-footer-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M2 4h12M2 8h12M2 12h8" stroke="#687385" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        English (United States)
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================= MAIN CONTENT ========================= -->
+  <main class="main-content">
+
+    <!-- Breadcrumbs row -->
+    <div class="breadcrumb-row">
+      <div class="breadcrumb">
+        <span class="breadcrumb-item">Home</span>
+        <svg class="breadcrumb-sep" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#667691" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="breadcrumb-item">Payments</span>
+        <svg class="breadcrumb-sep" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#667691" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="breadcrumb-item">Add payment methods</span>
+        <svg class="breadcrumb-sep" viewBox="0 0 8 8" fill="none"><path d="M2 1L5 4L2 7" stroke="#667691" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="breadcrumb-item">Bank debits</span>
+      </div>
+
+      <!-- Overflow menu (visible only on small viewports) -->
+      <div class="overflow-menu-wrapper">
+        <button class="overflow-menu-btn" id="overflowMenuBtn" aria-label="On this page">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 7h8M4 4h8M4 10h8" stroke="#353a44" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="overflow-popover" id="overflowPopover">
+          <div class="overflow-popover-title">On this page</div>
+          <a href="#overview" class="overflow-popover-item">Overview</a>
+          <a href="#eligibility" class="overflow-popover-item">Eligibility and availability</a>
+          <a href="#capabilities" class="overflow-popover-item">Capabilities</a>
+          <a href="#mandates" class="overflow-popover-item">Mandates</a>
+          <a href="#settlement" class="overflow-popover-item">Settlement and timing</a>
+          <a href="#payment-flow" class="overflow-popover-item">Payment flow</a>
+          <a href="#get-started" class="overflow-popover-item">Get started</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Title -->
+    <h1 class="page-title">ACH Direct Debit payments</h1>
+    <p class="page-subtitle">Accept payments by debiting your US customers' bank accounts.</p>
+
+    <!-- ===== OVERVIEW ===== -->
+    <section class="section" id="overview">
+      <h2 class="section-title">Overview</h2>
+      <p class="section-text">
+        ACH Direct Debit lets you collect payments directly from a customer's US bank account. It's one of the most popular payment methods in the United States for recurring and high-value transactions due to its low cost and broad reach across virtually all US bank accounts.
+      </p>
+
+      <table class="feature-table">
+        <tr>
+          <td class="label-col">Payment method family</td>
+          <td class="value-col"><a href="https://docs.stripe.com/payments/bank-debits" target="_blank" rel="noopener">Bank debit</a></td>
+        </tr>
+        <tr>
+          <td class="label-col">Usability</td>
+          <td class="value-col">
+            <span class="mcc-glossary-wrapper">
+              <span class="mcc-glossary-link" id="reusableLink">Reusable</span>
+              <div class="mcc-tooltip" id="reusableTooltip">Reusable payment methods can be saved to a customer for future payments. After the initial setup, customers don't need to re-enter their payment details for subsequent transactions. <a href="https://docs.stripe.com/payments/payment-methods#usage" target="_blank" rel="noopener">Learn more</a></div>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Access type</td>
+          <td class="value-col">
+            <span class="mcc-glossary-wrapper">
+              <span class="mcc-glossary-link" id="accessTypeLink">Instant provisional access</span>
+              <div class="mcc-tooltip" id="accessTypeTooltip">Instant provisional access allows you start accepting payments with this method right away. See the <a href="#eligibility">eligibility section</a> for more details.</div>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Payment confirmation timing</td>
+          <td class="value-col">
+            <span class="mcc-glossary-wrapper">
+              <span class="mcc-glossary-link" id="delayedLink">Delayed</span>
+              <div class="mcc-tooltip" id="delayedTooltip">Delayed notification payment methods take time to confirm whether the payment was successful. PaymentIntent status changes to processing and then eventually to succeeded or requires_payment_method. You shouldn't fulfill orders until the payment status reaches succeeded. <a href="https://docs.stripe.com/payments/payment-methods#payment-notification" target="_blank" rel="noopener">Learn more</a></div>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Payout timing</td>
+          <td class="value-col">Standard: 4 business days (T+4) &middot; Faster: 2 business days (T+2)</td>
+        </tr>
+        <tr>
+          <td class="label-col">Pricing</td>
+          <td class="value-col"><a href="https://stripe.com/pricing/local-payment-methods#ach-direct-debit" target="_blank" rel="noopener">View pricing details</a></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- ===== ELIGIBILITY AND AVAILABILITY ===== -->
+    <section class="section" id="eligibility">
+      <h2 class="section-title">Eligibility and availability</h2>
+
+      <!-- Account eligibility -->
+      <h3 class="section-subtitle">Account eligibility</h3>
+      <p class="section-text">Stripe accounts with the following properties can accept ACH Direct Debit payments.</p>
+
+      <table class="feature-table">
+        <tr>
+          <td class="label-col">Business location</td>
+          <td class="value-col">
+            <span class="flag-item">
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect width="16" height="12" rx="1" fill="#B22234"/><rect y="1" width="16" height="0.92" fill="white"/><rect y="2.85" width="16" height="0.92" fill="white"/><rect y="4.69" width="16" height="0.92" fill="white"/><rect y="6.54" width="16" height="0.92" fill="white"/><rect y="8.38" width="16" height="0.92" fill="white"/><rect y="10.23" width="16" height="0.92" fill="white"/><rect width="6.4" height="6.46" fill="#3C3B6E"/></svg>
+              United States
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Account type</td>
+          <td class="value-col">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Merchant
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Platform/Marketplace (Connect)
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Business model</td>
+          <td class="value-col">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              B2B
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              B2C
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Required capability</td>
+          <td class="value-col"><code style="font-size: 14px; background: #f5f6f8; padding: 2px 6px; border-radius: 4px; color: #596171;">us_bank_account_ach_payments</code></td>
+        </tr>
+      </table>
+
+      <!-- Payment support -->
+      <div class="mt-32">
+        <h3 class="section-subtitle">Payment support</h3>
+
+        <table class="feature-table">
+          <tr>
+            <td class="label-col">Buyer location</td>
+            <td class="value-col">
+              <span class="flag-item">
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect width="16" height="12" rx="1" fill="#B22234"/><rect y="1" width="16" height="0.92" fill="white"/><rect y="2.85" width="16" height="0.92" fill="white"/><rect y="4.69" width="16" height="0.92" fill="white"/><rect y="6.54" width="16" height="0.92" fill="white"/><rect y="8.38" width="16" height="0.92" fill="white"/><rect y="10.23" width="16" height="0.92" fill="white"/><rect width="6.4" height="6.46" fill="#3C3B6E"/></svg>
+                United States
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="label-col">Presentment currency</td>
+            <td class="value-col">
+              <span class="flag-item">
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><rect width="16" height="12" rx="1" fill="#B22234"/><rect y="1" width="16" height="0.92" fill="white"/><rect y="2.85" width="16" height="0.92" fill="white"/><rect y="4.69" width="16" height="0.92" fill="white"/><rect y="6.54" width="16" height="0.92" fill="white"/><rect y="8.38" width="16" height="0.92" fill="white"/><rect y="10.23" width="16" height="0.92" fill="white"/><rect width="6.4" height="6.46" fill="#3C3B6E"/></svg>
+                USD
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="label-col">Geographic coverage</td>
+            <td class="value-col">
+              <div class="check-item">
+                <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                Domestic
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="label-col">Transaction limits</td>
+            <td class="value-col">US$0.50 minimum</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== CAPABILITIES ===== -->
+    <section class="section" id="capabilities">
+      <h2 class="section-title">Capabilities</h2>
+      <p class="section-text">View the breakdown of payment capabilities for this payment method.</p>
+
+      <table class="feature-table">
+        <tr>
+          <td class="label-col">Recurring payments</td>
+          <td class="value-col">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Supported
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Payment authorizations</td>
+          <td class="value-col">
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Extended authorizations
+            </div>
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Flexible extended authorizations
+            </div>
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Incremental authorizations
+            </div>
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Decremental authorizations
+            </div>
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Re-authorizations
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Payment captures</td>
+          <td class="value-col">
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Manual capture
+            </div>
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Partial capture
+            </div>
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Multi-capture
+            </div>
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Over-capture
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col"><a href="#refunds-info">Refunds</a></td>
+          <td class="value-col">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Partial refunds
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Full refunds
+            </div>
+            <div class="table-separator"></div>
+            <div class="table-detail">Filing window: 180 days</div>
+            <div class="table-detail">Processing time: 3+ business days</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col"><a href="#disputes-info">Disputes</a></td>
+          <td class="value-col">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Full disputes
+            </div>
+            <div class="table-separator"></div>
+            <div class="table-detail">Personal accounts: 60 calendar days</div>
+            <div class="table-detail">Business accounts: 2 business days</div>
+          </td>
+        </tr>
+      </table>
+
+      <div class="additional-info" id="refunds-info">
+        <p class="additional-info-title">Refunds</p>
+        <p class="additional-info-small">ACH Direct Debit supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge. You have up to 180 days from the original payment to submit a refund through Stripe. Refunds require a minimum of 3 business days to process.</p>
+      </div>
+
+      <div class="additional-info">
+        <p class="additional-info-subtitle">How refunds work</p>
+        <p class="additional-info-small">Submit refunds using the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> or the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener">Refunds API</a>. When you submit a refund, Stripe sends the request through the ACH network to the customer's bank. The bank credits the refund to the customer's original bank account.</p>
+        <p class="additional-info-small" style="margin-top: 12px;">Refunds for ACH Direct Debit payments that haven't completed yet (status: processing) can't be submitted until the payment succeeds. If a payment fails, no refund is necessary since the funds were never collected.</p>
+      </div>
+
+      <div class="additional-info">
+        <p class="additional-info-subtitle">Track refund status</p>
+        <p class="additional-info-small">Check the status of a refund in the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> on the payment details page, or through the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener">Refunds API</a>. Refunds can remain in a pending state while the bank processes the request.</p>
+        <p class="additional-info-small" style="margin-top: 12px;">Stripe sends webhook events for refund status changes:</p>
+        <ul class="additional-info-list" style="margin-top: 4px;">
+          <li class="additional-info-small">refund.updated — The refund succeeded or its status changed.</li>
+          <li class="additional-info-small">refund.failed — The refund failed. Check the failure_reason field on the <a href="https://docs.stripe.com/api/refunds/object" target="_blank" rel="noopener">Refund</a> object for details.</li>
+        </ul>
+      </div>
+
+      <div class="additional-info" id="disputes-info">
+        <p class="additional-info-title">Disputes</p>
+        <p class="additional-info-small">Customers can dispute ACH Direct Debit payments through their bank. Dispute windows vary by account type: personal account holders have up to 60 calendar days from the statement date, while business account holders have 2 business days.</p>
+        <p class="additional-info-small" style="margin-top: 12px;">ACH disputes are final and cannot be appealed. When a customer disputes a payment, the funds are withdrawn from your Stripe balance and the associated mandate is invalidated — you'll need to collect a new mandate before debiting that customer again.</p>
+      </div>
+
+      <div class="additional-info">
+        <p class="additional-info-subtitle">Reduce disputes</p>
+        <p class="additional-info-small">To minimize disputes, use a recognizable statement descriptor and send payment notification emails so customers can identify the charge. Proactively refunding disputed transactions can also help, since refunds resolve the dispute without additional fees.</p>
+      </div>
+    </section>
+
+    <!-- ===== STRIPE SUPPORT ===== -->
+    <section class="section" id="stripe-support">
+      <h2 class="section-title">Stripe support</h2>
+      <p class="section-text">View the breakdown of supported Stripe products for this payment method.</p>
+
+      <table class="feature-table">
+        <tr>
+          <td class="label-col">Products</td>
+          <td class="value-col">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Checkout
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Payment Links
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Payment Element
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Mobile Payment Element
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Billing
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Invoicing
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Customer portal
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Radar
+            </div>
+            <div class="x-item">
+              <div class="x-icon"><svg viewBox="0 0 8 8" fill="none"><path d="M2 2L6 6M6 2L2 6" stroke="#687385" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Terminal
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">APIs</td>
+          <td class="value-col">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              PaymentIntents
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              PaymentIntents with setup_future_usage
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              SetupIntents
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              CheckoutSessions
+            </div>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- ===== MANDATES ===== -->
+    <section class="section" id="mandates">
+      <h2 class="section-title">Mandates</h2>
+      <p class="section-text">
+        To debit a customer's bank account with ACH, you must first obtain their authorization through a mandate. A mandate is a record of the permission that a customer gives you to debit their bank account.
+      </p>
+      <p class="section-text">
+        Stripe handles mandate collection as part of the payment flow when you use Checkout, Payment Links, or the Payment Element. The customer reviews the mandate terms and accepts them during the payment process. After the customer authorizes the mandate, Stripe sends a confirmation email to the customer per Nacha compliance requirements.
+      </p>
+
+      <div class="additional-info">
+        <p class="additional-info-subtitle">Mandate types</p>
+        <p class="additional-info-small">ACH supports both online and offline mandates:</p>
+        <ul class="additional-info-list" style="margin-top: 8px;">
+          <li class="additional-info-small"><strong>Online mandates</strong> — Collected digitally through your payment flow. Stripe manages these automatically when using Checkout, Payment Links, or the Payment Element.</li>
+          <li class="additional-info-small"><strong>Offline mandates</strong> — Collected through paper forms or phone calls. If you collect mandates offline, you're responsible for storing the authorization and providing it if a dispute arises.</li>
+        </ul>
+      </div>
+
+      <div class="additional-info">
+        <p class="additional-info-small">For detailed information on mandate requirements, verification methods, and compliance considerations, see the <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener">Accept a payment</a> guide.</p>
+      </div>
+    </section>
+
+    <!-- ===== SETTLEMENT AND TIMING ===== -->
+    <section class="section" id="settlement">
+      <h2 class="section-title">Settlement and timing</h2>
+      <p class="section-text">
+        ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.
+      </p>
+
+      <table class="feature-table">
+        <tr>
+          <td class="label-col">Standard settlement</td>
+          <td class="value-col">
+            <strong>T+4</strong> — 4 business days<br>
+            <span style="color: #687385; font-size: 14px;">Cutoff: 21:00 US/Eastern</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-col">Faster settlement</td>
+          <td class="value-col">
+            <strong>T+2</strong> — 2 business days<br>
+            <span style="color: #687385; font-size: 14px;">Cutoff: 14:00 US/Eastern &middot; Eligibility required</span>
+          </td>
+        </tr>
+      </table>
+
+      <div class="additional-info">
+        <p class="additional-info-subtitle">How settlement works</p>
+        <p class="additional-info-small">When a customer completes an ACH payment, the PaymentIntent status moves to <code style="font-size: 13px; background: #f5f6f8; padding: 1px 4px; border-radius: 3px;">processing</code>. During this window, the bank can reject the debit for reasons such as insufficient funds, an invalid account, or a disabled account. If the payment succeeds, the status changes to <code style="font-size: 13px; background: #f5f6f8; padding: 1px 4px; border-radius: 3px;">succeeded</code>.</p>
+        <p class="additional-info-small" style="margin-top: 12px;">Because of the delayed confirmation, avoid fulfilling orders until the payment status reaches <code style="font-size: 13px; background: #f5f6f8; padding: 1px 4px; border-radius: 3px;">succeeded</code>. If a payment fails after being initially accepted, Stripe removes the funds from your Stripe balance.</p>
+      </div>
+
+      <div class="additional-info">
+        <p class="additional-info-subtitle">Bank account verification</p>
+        <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods:</p>
+        <ul class="additional-info-list" style="margin-top: 8px;">
+          <li class="additional-info-small"><strong>Instant verification</strong> — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures.</li>
+          <li class="additional-info-small"><strong>Microdeposits</strong> — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== PAYMENT FLOW ===== -->
+    <section class="section" id="payment-flow">
+      <h2 class="section-title">Payment flow</h2>
+
+      <div class="tabs">
+        <div class="tab active" data-tab="mobile">Mobile</div>
+        <div class="tab" data-tab="desktop">Desktop</div>
+      </div>
+
+      <div class="payment-flow">
+        <div class="payment-flow-steps">
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">1</div>
+              <span class="payment-flow-step-title">Select payment method</span>
+            </div>
+            <p class="payment-flow-step-text">Customer selects ACH Direct Debit at checkout.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">2</div>
+              <span class="payment-flow-step-title">Authenticate bank account</span>
+            </div>
+            <p class="payment-flow-step-text">Customer authenticates with their bank via Financial Connections or enters account details for microdeposit verification.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">3</div>
+              <span class="payment-flow-step-title">Accept mandate</span>
+            </div>
+            <p class="payment-flow-step-text">Customer reviews and accepts the mandate authorizing debits from their bank account.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">4</div>
+              <span class="payment-flow-step-title">Payment processing</span>
+            </div>
+            <p class="payment-flow-step-text">Payment enters processing. Confirmation is delayed up to 4 business days while the bank verifies funds.</p>
+          </div>
+          <div class="payment-flow-step">
+            <div class="payment-flow-step-header">
+              <div class="step-counter">5</div>
+              <span class="payment-flow-step-title">Payment complete</span>
+            </div>
+            <p class="payment-flow-step-text">Customer is notified that the payment is complete once the bank confirms the debit.</p>
+          </div>
+        </div>
+
+        <div class="payment-flow-image" id="flowMobile">
+          <div class="phone-mockup" style="background: #f5f6f8; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; padding: 16px;">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin-bottom: 8px;">
+                <rect x="4" y="8" width="40" height="32" rx="3" stroke="#687385" stroke-width="2" fill="none"/>
+                <path d="M4 16h40" stroke="#687385" stroke-width="2"/>
+                <circle cx="24" cy="30" r="6" stroke="#687385" stroke-width="2" fill="none"/>
+                <path d="M22 30l2 2 4-4" stroke="#687385" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div style="font-size: 11px; color: #687385; line-height: 14px;">ACH Direct Debit<br>payment flow</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="payment-flow-image" id="flowDesktop" style="display:none;">
+          <div class="desktop-mockup" style="background: #f5f6f8; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; padding: 16px;">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="margin-bottom: 8px;">
+                <rect x="4" y="8" width="40" height="32" rx="3" stroke="#687385" stroke-width="2" fill="none"/>
+                <path d="M4 16h40" stroke="#687385" stroke-width="2"/>
+                <circle cx="24" cy="30" r="6" stroke="#687385" stroke-width="2" fill="none"/>
+                <path d="M22 30l2 2 4-4" stroke="#687385" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div style="font-size: 11px; color: #687385; line-height: 14px;">ACH Direct Debit<br>payment flow</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="additional-info" style="margin-top: 24px;">
+        <p class="additional-info-title">Transaction Identifiers</p>
+        <p class="additional-info-small">After a customer completes an ACH Direct Debit payment, the transaction appears on their bank statement. The statement entry shows your statement descriptor, which you can set on the PaymentIntent.</p>
+        <p class="additional-info-small" style="margin-top: 12px;">Use a clear, recognizable statement descriptor to help customers identify the payment and reduce the likelihood of disputes. The descriptor can be up to 10 characters for ACH payments.</p>
+      </div>
+    </section>
+
+    <!-- ===== GET STARTED ===== -->
+    <section class="section" id="get-started">
+      <h2 class="section-title">Get started with ACH Direct Debit</h2>
+      <p class="section-text" style="padding-bottom: 12px;">
+        If you use our front-end products, you can enable ACH Direct Debit directly from your <a href="https://dashboard.stripe.com/settings/payment_methods" target="_blank" rel="noopener">payment method settings</a> — no additional integration required. Stripe then automatically determines the most relevant payment methods to display to your customers.
+      </p>
+      <p class="section-text">
+        If your integration requires manually listing payment methods, learn how to <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener">manually configure ACH Direct Debit as a payment</a>.
+      </p>
+    </section>
+
+
+  </main>
+
+  <!-- ========================= RIGHT SIDEBAR ========================= -->
+  <aside class="right-sidebar">
+    <div class="right-sidebar-title">On this page</div>
+    <a href="#overview">Overview</a>
+    <a href="#eligibility">Eligibility and availability</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#mandates">Mandates</a>
+    <a href="#settlement">Settlement and timing</a>
+    <a href="#payment-flow">Payment flow</a>
+    <a href="#get-started">Get started</a>
+  </aside>
+</div>
+
+<script>
+  // Overflow menu
+  const btn = document.getElementById('overflowMenuBtn');
+  const popover = document.getElementById('overflowPopover');
+
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    popover.classList.toggle('open');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!popover.contains(e.target) && e.target !== btn) {
+      popover.classList.remove('open');
+    }
+  });
+
+  popover.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      popover.classList.remove('open');
+    });
+  });
+
+  // Glossary tooltips
+  document.querySelectorAll('.mcc-glossary-wrapper').forEach(function (wrapper) {
+    var link = wrapper.querySelector('.mcc-glossary-link');
+    var tip = wrapper.querySelector('.mcc-tooltip');
+    var hideTimeout;
+
+    function show() {
+      clearTimeout(hideTimeout);
+      tip.classList.add('visible');
+    }
+    function hide() {
+      hideTimeout = setTimeout(function () {
+        tip.classList.remove('visible');
+      }, 100);
+    }
+
+    link.addEventListener('mouseenter', show);
+    link.addEventListener('mouseleave', hide);
+    tip.addEventListener('mouseenter', show);
+    tip.addEventListener('mouseleave', hide);
+  });
+
+  // Payment flow tabs
+  var tabs = document.querySelectorAll('.tabs .tab');
+  var flowMobile = document.getElementById('flowMobile');
+  var flowDesktop = document.getElementById('flowDesktop');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      if (tab.getAttribute('data-tab') === 'desktop') {
+        flowMobile.style.display = 'none';
+        flowDesktop.style.display = '';
+      } else {
+        flowMobile.style.display = '';
+        flowDesktop.style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>
