@@ -333,7 +333,7 @@
 
       <!-- Settlement and timing collapsible subsection -->
       <div class="collapsible-section" style="margin-top: 24px;">
-        <div class="collapsible-header" id="settlementToggle" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
+        <div class="collapsible-header" data-toggle="settlementContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
           <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;">
             <path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -524,36 +524,48 @@
         </tr>
       </table>
 
-      <div class="additional-info" id="refunds-info">
-        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Refunds</p>
-        <p class="additional-info-small">ACH Direct Debit supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge. You have up to 180 days from the original payment to submit a refund through Stripe. Refunds require a minimum of 3 business days to process.</p>
+      <!-- Refunds collapsible -->
+      <div class="collapsible-section" id="refunds-info" style="margin-top: 16px;">
+        <div class="collapsible-header" data-toggle="refundsContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
+          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;"><path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Refunds</p>
+        </div>
+        <div class="collapsible-content" id="refundsContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">ACH Direct Debit supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge. You have up to 180 days from the original payment to submit a refund through Stripe. Refunds require a minimum of 3 business days to process.</p>
+
+          <div style="margin-top: 16px;">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">How refunds work</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Submit refunds using the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener" style="color: #533afd;">Dashboard</a> or the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener" style="color: #533afd;">Refunds API</a>. When you submit a refund, Stripe sends the request through the ACH network to the customer's bank. The bank credits the refund to the customer's original bank account.</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Refunds for ACH Direct Debit payments that haven't completed yet (status: processing) can't be submitted until the payment succeeds. If a payment fails, no refund is necessary since the funds were never collected.</p>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Track refund status</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Check the status of a refund in the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener" style="color: #533afd;">Dashboard</a> on the payment details page, or through the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener" style="color: #533afd;">Refunds API</a>. Refunds can remain in a pending state while the bank processes the request.</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Stripe sends webhook events for refund status changes:</p>
+            <ul style="list-style: disc; padding-left: 24px; margin-top: 4px;">
+              <li style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">refund.updated — The refund succeeded or its status changed.</li>
+              <li style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">refund.failed — The refund failed. Check the failure_reason field on the <a href="https://docs.stripe.com/api/refunds/object" target="_blank" rel="noopener" style="color: #533afd;">Refund</a> object for details.</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="additional-info">
-        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">How refunds work</p>
-        <p class="additional-info-small">Submit refunds using the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> or the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener">Refunds API</a>. When you submit a refund, Stripe sends the request through the ACH network to the customer's bank. The bank credits the refund to the customer's original bank account.</p>
-        <p class="additional-info-small" style="margin-top: 12px;">Refunds for ACH Direct Debit payments that haven't completed yet (status: processing) can't be submitted until the payment succeeds. If a payment fails, no refund is necessary since the funds were never collected.</p>
-      </div>
+      <!-- Disputes collapsible -->
+      <div class="collapsible-section" id="disputes-info" style="margin-top: 16px;">
+        <div class="collapsible-header" data-toggle="disputesContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
+          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;"><path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Disputes</p>
+        </div>
+        <div class="collapsible-content" id="disputesContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Customers can dispute ACH Direct Debit payments through their bank. Dispute windows vary by account type: personal account holders have up to 60 calendar days from the statement date, while business account holders have 2 business days.</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">ACH disputes are final and cannot be appealed. When a customer disputes a payment, the funds are withdrawn from your Stripe balance and the associated mandate is invalidated — you'll need to collect a new mandate before debiting that customer again.</p>
 
-      <div class="additional-info">
-        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Track refund status</p>
-        <p class="additional-info-small">Check the status of a refund in the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> on the payment details page, or through the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener">Refunds API</a>. Refunds can remain in a pending state while the bank processes the request.</p>
-        <p class="additional-info-small" style="margin-top: 12px;">Stripe sends webhook events for refund status changes:</p>
-        <ul class="additional-info-list" style="margin-top: 4px;">
-          <li class="additional-info-small">refund.updated — The refund succeeded or its status changed.</li>
-          <li class="additional-info-small">refund.failed — The refund failed. Check the failure_reason field on the <a href="https://docs.stripe.com/api/refunds/object" target="_blank" rel="noopener">Refund</a> object for details.</li>
-        </ul>
-      </div>
-
-      <div class="additional-info" id="disputes-info">
-        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Disputes</p>
-        <p class="additional-info-small">Customers can dispute ACH Direct Debit payments through their bank. Dispute windows vary by account type: personal account holders have up to 60 calendar days from the statement date, while business account holders have 2 business days.</p>
-        <p class="additional-info-small" style="margin-top: 12px;">ACH disputes are final and cannot be appealed. When a customer disputes a payment, the funds are withdrawn from your Stripe balance and the associated mandate is invalidated — you'll need to collect a new mandate before debiting that customer again.</p>
-      </div>
-
-      <div class="additional-info">
-        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Reduce disputes</p>
-        <p class="additional-info-small">To minimize disputes, use a recognizable statement descriptor and send payment notification emails so customers can identify the charge. Proactively refunding disputed transactions can also help, since refunds resolve the dispute without additional fees.</p>
+          <div style="margin-top: 16px;">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Reduce disputes</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">To minimize disputes, use a recognizable statement descriptor and send payment notification emails so customers can identify the charge. Proactively refunding disputed transactions can also help, since refunds resolve the dispute without additional fees.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -929,15 +941,16 @@
     renderRows(this.value);
   });
 
-  // Collapsible settlement section
-  var settlementToggle = document.getElementById('settlementToggle');
-  var settlementContent = document.getElementById('settlementContent');
-  var settlementChevron = settlementToggle.querySelector('.collapsible-chevron');
-
-  settlementToggle.addEventListener('click', function () {
-    var isOpen = settlementContent.style.display !== 'none';
-    settlementContent.style.display = isOpen ? 'none' : 'block';
-    settlementChevron.style.transform = isOpen ? '' : 'rotate(90deg)';
+  // Collapsible sections
+  document.querySelectorAll('.collapsible-header').forEach(function (header) {
+    header.addEventListener('click', function () {
+      var targetId = header.getAttribute('data-toggle');
+      var content = document.getElementById(targetId);
+      var chevron = header.querySelector('.collapsible-chevron');
+      var isOpen = content.style.display !== 'none';
+      content.style.display = isOpen ? 'none' : 'block';
+      chevron.style.transform = isOpen ? '' : 'rotate(90deg)';
+    });
   });
 
   // Payment flow tabs
