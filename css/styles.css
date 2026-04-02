@@ -665,6 +665,10 @@ ul {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+  padding: 20px;
+  background: #fff;
 }
 .phone-mockup {
   width: 166px;
