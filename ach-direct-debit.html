@@ -272,7 +272,6 @@
           <a href="#eligibility" class="overflow-popover-item">Eligibility and availability</a>
           <a href="#capabilities" class="overflow-popover-item">Capabilities</a>
           <a href="#stripe-support" class="overflow-popover-item">Stripe support</a>
-          <a href="#mandates" class="overflow-popover-item">Mandates</a>
           <a href="#buyer-experience" class="overflow-popover-item">Buyer experience</a>
           <a href="#enable" class="overflow-popover-item">Enable ACH Direct Debit</a>
         </div>
@@ -634,29 +633,29 @@
           </td>
         </tr>
       </table>
-    </section>
 
-    <!-- ===== MANDATES ===== -->
-    <section class="section" id="mandates">
-      <h2 class="section-title">Mandates</h2>
-      <p class="section-text">
-        To debit a customer's bank account with ACH, you must first obtain their authorization through a mandate. A mandate is a record of the permission that a customer gives you to debit their bank account.
-      </p>
-      <p class="section-text">
-        Stripe handles mandate collection as part of the payment flow when you use Checkout, Payment Links, or the Payment Element. The customer reviews the mandate terms and accepts them during the payment process. After the customer authorizes the mandate, Stripe sends a confirmation email to the customer per Nacha compliance requirements.
-      </p>
+      <!-- Mandates subsection -->
+      <div class="mt-32" id="mandates">
+        <h3 class="section-subtitle" style="font-size: 20px; line-height: 28px;">Mandates</h3>
+        <p class="section-text">
+          To debit a customer's bank account with ACH, you must first obtain their authorization through a mandate. A mandate is a record of the permission that a customer gives you to debit their bank account.
+        </p>
+        <p class="section-text">
+          Stripe handles mandate collection as part of the payment flow when you use Checkout, Payment Links, or the Payment Element. The customer reviews the mandate terms and accepts them during the payment process. After the customer authorizes the mandate, Stripe sends a confirmation email to the customer per Nacha compliance requirements.
+        </p>
 
-      <div class="additional-info">
-        <p class="additional-info-subtitle">Mandate types</p>
-        <p class="additional-info-small">ACH supports both online and offline mandates:</p>
-        <ul class="additional-info-list" style="margin-top: 8px;">
-          <li class="additional-info-small"><strong>Online mandates</strong> — Collected digitally through your payment flow. Stripe manages these automatically when using Checkout, Payment Links, or the Payment Element.</li>
-          <li class="additional-info-small"><strong>Offline mandates</strong> — Collected through paper forms or phone calls. If you collect mandates offline, you're responsible for storing the authorization and providing it if a dispute arises.</li>
-        </ul>
-      </div>
+        <div class="additional-info">
+          <p class="additional-info-subtitle">Mandate types</p>
+          <p class="additional-info-small">ACH supports both online and offline mandates:</p>
+          <ul class="additional-info-list" style="margin-top: 8px;">
+            <li class="additional-info-small"><strong>Online mandates</strong> — Collected digitally through your payment flow. Stripe manages these automatically when using Checkout, Payment Links, or the Payment Element.</li>
+            <li class="additional-info-small"><strong>Offline mandates</strong> — Collected through paper forms or phone calls. If you collect mandates offline, you're responsible for storing the authorization and providing it if a dispute arises.</li>
+          </ul>
+        </div>
 
-      <div class="additional-info">
-        <p class="additional-info-small">For detailed information on mandate requirements, verification methods, and compliance considerations, see the <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener">Accept a payment</a> guide.</p>
+        <div class="additional-info">
+          <p class="additional-info-small">For detailed information on mandate requirements, verification methods, and compliance considerations, see the <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener">Accept a payment</a> guide.</p>
+        </div>
       </div>
     </section>
 
@@ -765,7 +764,6 @@
     <a href="#eligibility">Eligibility and availability</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#stripe-support">Stripe support</a>
-    <a href="#mandates">Mandates</a>
     <a href="#buyer-experience">Buyer experience</a>
     <a href="#enable">Enable ACH Direct Debit</a>
   </aside>
