@@ -331,41 +331,32 @@
         </tr>
       </table>
 
-      <!-- Settlement and timing subsection -->
-      <h3 style="margin-top: 24px; font-size: 20px; font-weight: 700; color: #353a44; line-height: 28px; letter-spacing: 0.3px; margin-bottom: 8px;">Settlement and timing</h3>
-      <p class="section-text">
-        ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.
-      </p>
+      <!-- Settlement and timing collapsible subsection -->
+      <div class="collapsible-section" style="margin-top: 24px;">
+        <div class="collapsible-header" id="settlementToggle" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
+          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;">
+            <path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Settlement and timing</h3>
+        </div>
+        <div class="collapsible-content" id="settlementContent" style="display: none; padding-left: 32px; margin-top: 8px;">
+          <p class="additional-info-small" style="color: #1a2c44;">ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.</p>
 
-      <table class="feature-table">
-        <tr>
-          <td class="label-col">Standard settlement</td>
-          <td class="value-col">
-            T+4: 4 business days<br>
-            Cutoff: 21:00 ET
-          </td>
-        </tr>
-        <tr>
-          <td class="label-col">Faster settlement</td>
-          <td class="value-col">
-            T+2: 2 business days<br>
-            Cutoff: 14:00 ET (Eligibility required)
-          </td>
-        </tr>
-      </table>
+          <div class="additional-info">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">How settlement work</p>
+            <p class="additional-info-small">When a customer completes an ACH payment, the PaymentIntent status moves to processing. During this window, the bank can reject the debit for reasons such as insufficient funds, an invalid account, or a disabled account. If the payment succeeds, the status changes to succeeded.</p>
+            <p class="additional-info-small" style="margin-top: 12px;">Because of the delayed confirmation, avoid fulfilling orders until the payment status reaches succeeded. If a payment fails after being initially accepted, Stripe removes the funds from your Stripe balance.</p>
+          </div>
 
-      <div class="additional-info">
-        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">How settlement work</p>
-        <p class="additional-info-small">When a customer completes an ACH payment, the PaymentIntent status moves to processing. During this window, the bank can reject the debit for reasons such as insufficient funds, an invalid account, or a disabled account. If the payment succeeds, the status changes to succeeded. Because of the delayed confirmation, avoid fulfilling orders until the payment status reaches succeeded. If a payment fails after being initially accepted, Stripe removes the funds from your Stripe balance.</p>
-      </div>
-
-      <div class="additional-info">
-        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Bank account verification</p>
-        <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods:</p>
-        <ul class="additional-info-list" style="margin-top: 8px;">
-          <li class="additional-info-small">Instant verification — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures.</li>
-          <li class="additional-info-small">Microdeposits — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</li>
-        </ul>
+          <div class="additional-info">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Bank account verification</p>
+            <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods:</p>
+            <ul class="additional-info-list" style="margin-top: 4px;">
+              <li class="additional-info-small">Instant verification — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures.</li>
+              <li class="additional-info-small">Microdeposits — Two small deposits are sent to the bank account and the customer verifies the amounts. This process takes 1-2 business days and customers have a 10-day window to complete verification.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -936,6 +927,17 @@
 
   searchInput.addEventListener('input', function () {
     renderRows(this.value);
+  });
+
+  // Collapsible settlement section
+  var settlementToggle = document.getElementById('settlementToggle');
+  var settlementContent = document.getElementById('settlementContent');
+  var settlementChevron = settlementToggle.querySelector('.collapsible-chevron');
+
+  settlementToggle.addEventListener('click', function () {
+    var isOpen = settlementContent.style.display !== 'none';
+    settlementContent.style.display = isOpen ? 'none' : 'block';
+    settlementChevron.style.transform = isOpen ? '' : 'rotate(90deg)';
   });
 
   // Payment flow tabs
