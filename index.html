@@ -541,18 +541,18 @@
       </table>
 
       <div class="additional-info" id="refunds-info">
-        <p class="additional-info-title">Refunds</p>
+        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Refunds</p>
         <p class="additional-info-small">Przelewy24 supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge. Refunds are merchant-initiated, which means your refund policy governs when customers are eligible for a refund. You have up to 180 days from the original payment to submit a refund through Stripe.</p>
       </div>
 
       <div class="additional-info">
-        <p class="additional-info-subtitle">How refunds work</p>
+        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">How refunds work</p>
         <p class="additional-info-small">Submit refunds using the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> or the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener">Refunds API</a>. When you submit a refund, Stripe sends the request through the Przelewy24 network to the customer's bank. The bank credits the refund to the customer's original bank account. You can't cancel a P24 refund after you submit it.</p>
         <p class="additional-info-small" style="margin-top: 12px;">Refunds typically take 5–10 business days to appear on the customer's bank statement. Depending on when you issue the refund, it appears on the customer's statement as either a reversal or a credit. Refunds issued shortly after the original payment might appear as a reversal—the original charge drops off the statement entirely. Later refunds appear as a separate credit.</p>
       </div>
 
       <div class="additional-info">
-        <p class="additional-info-subtitle">Track refund status</p>
+        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Track refund status</p>
         <p class="additional-info-small">Check the status of a refund in the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> on the payment details page, or through the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener">Refunds API</a>. Refunds can remain in a pending state while the bank processes the request.</p>
         <p class="additional-info-small" style="margin-top: 12px;">Stripe sends webhook events for refund status changes:</p>
         <ul class="additional-info-list" style="margin-top: 4px;">
@@ -562,7 +562,7 @@
       </div>
 
       <div class="additional-info" id="disputes-info">
-        <p class="additional-info-title">Disputes</p>
+        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Disputes</p>
         <p class="additional-info-small">Przelewy24 requires customers to authenticate payments directly with their bank, which significantly reduces the risk of fraud and unrecognized transactions. As a result, P24 doesn't support the standard dispute process—customers can't file a chargeback through their bank, and funds are never withdrawn from your Stripe balance due to a dispute.</p>
         <p class="additional-info-small" style="margin-top: 12px;">If a customer contacts their bank about a Przelewy24 payment, the bank directs them back to you. You can issue a full or partial refund if appropriate.</p>
       </div>
@@ -707,7 +707,7 @@
       </div>
 
       <div class="additional-info" style="margin-top: 24px;">
-        <p class="additional-info-title">Transaction Identifiers</p>
+        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Transaction identifiers</p>
         <p class="additional-info-small">After a customer completes a Przelewy24 payment, the transaction appears on their bank statement. The statement entry includes a unique Przelewy24 reference number followed by your statement descriptor, in the format:</p>
         <p class="additional-info-small" style="margin-top: 12px; font-family: monospace; padding-left: 8px;">/OPT/X/////P24-XXX-XXX-XXX {your statement descriptor}</p>
         <p class="additional-info-small" style="margin-top: 12px;">You can set a custom statement descriptor of up to 14 characters on the PaymentIntent. If you don't set one, the descriptor defaults to "STRIPE POLAND."</p>

@@ -524,18 +524,18 @@
       </table>
 
       <div class="additional-info" id="refunds-info">
-        <p class="additional-info-title">Refunds</p>
+        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Refunds</p>
         <p class="additional-info-small">ACH Direct Debit supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge. You have up to 180 days from the original payment to submit a refund through Stripe. Refunds require a minimum of 3 business days to process.</p>
       </div>
 
       <div class="additional-info">
-        <p class="additional-info-subtitle">How refunds work</p>
+        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">How refunds work</p>
         <p class="additional-info-small">Submit refunds using the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> or the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener">Refunds API</a>. When you submit a refund, Stripe sends the request through the ACH network to the customer's bank. The bank credits the refund to the customer's original bank account.</p>
         <p class="additional-info-small" style="margin-top: 12px;">Refunds for ACH Direct Debit payments that haven't completed yet (status: processing) can't be submitted until the payment succeeds. If a payment fails, no refund is necessary since the funds were never collected.</p>
       </div>
 
       <div class="additional-info">
-        <p class="additional-info-subtitle">Track refund status</p>
+        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Track refund status</p>
         <p class="additional-info-small">Check the status of a refund in the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> on the payment details page, or through the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener">Refunds API</a>. Refunds can remain in a pending state while the bank processes the request.</p>
         <p class="additional-info-small" style="margin-top: 12px;">Stripe sends webhook events for refund status changes:</p>
         <ul class="additional-info-list" style="margin-top: 4px;">
@@ -545,13 +545,13 @@
       </div>
 
       <div class="additional-info" id="disputes-info">
-        <p class="additional-info-title">Disputes</p>
+        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Disputes</p>
         <p class="additional-info-small">Customers can dispute ACH Direct Debit payments through their bank. Dispute windows vary by account type: personal account holders have up to 60 calendar days from the statement date, while business account holders have 2 business days.</p>
         <p class="additional-info-small" style="margin-top: 12px;">ACH disputes are final and cannot be appealed. When a customer disputes a payment, the funds are withdrawn from your Stripe balance and the associated mandate is invalidated — you'll need to collect a new mandate before debiting that customer again.</p>
       </div>
 
       <div class="additional-info">
-        <p class="additional-info-subtitle">Reduce disputes</p>
+        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Reduce disputes</p>
         <p class="additional-info-small">To minimize disputes, use a recognizable statement descriptor and send payment notification emails so customers can identify the charge. Proactively refunding disputed transactions can also help, since refunds resolve the dispute without additional fees.</p>
       </div>
     </section>
@@ -730,7 +730,7 @@
       </div>
 
       <div class="additional-info" style="margin-top: 24px;">
-        <p class="additional-info-title">Transaction Identifiers</p>
+        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Transaction identifiers</p>
         <p class="additional-info-small">After a customer completes an ACH Direct Debit payment, the transaction appears on their bank statement. The statement entry shows your statement descriptor, which you can set on the PaymentIntent.</p>
         <p class="additional-info-small" style="margin-top: 12px;">Use a clear, recognizable statement descriptor to help customers identify the payment and reduce the likelihood of disputes. The descriptor can be up to 10 characters for ACH payments.</p>
       </div>
