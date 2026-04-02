@@ -662,22 +662,6 @@
         </tr>
       </table>
 
-      <!-- Mandates subsection -->
-      <div class="mt-32" id="mandates">
-        <h3 style="font-size: 20px; font-weight: 700; color: #353a44; line-height: 28px; letter-spacing: 0.3px; margin-bottom: 8px;">Mandates</h3>
-        <p class="additional-info-small">To debit a customer's bank account with ACH, you must first obtain their authorization through a mandate. A mandate is a record of the permission that a customer gives you to debit their bank account.</p>
-        <p class="additional-info-small" style="margin-top: 12px;">Stripe handles mandate collection as part of the payment flow when you use Checkout, Payment Links, or the Payment Element. The customer reviews the mandate terms and accepts them during the payment process. After the customer authorizes the mandate, Stripe sends a confirmation email to the customer per Nacha compliance requirements.</p>
-
-        <div class="additional-info">
-          <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Mandate types</p>
-          <p class="additional-info-small">ACH supports both online and offline mandates:</p>
-          <ul class="additional-info-list" style="margin-top: 4px;">
-            <li class="additional-info-small">Online mandates — Collected digitally through your payment flow. Stripe manages these automatically when using Checkout, Payment Links, or the Payment Element.</li>
-            <li class="additional-info-small">Offline mandates — Collected through paper forms or phone calls. If you collect mandates offline, you're responsible for storing the authorization and providing it if a dispute arises.</li>
-          </ul>
-          <p class="additional-info-small" style="margin-top: 12px;">For detailed information on mandate requirements, verification methods, and compliance considerations, see the <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener">Accept a payment</a> guide.</p>
-        </div>
-      </div>
     </section>
 
     <!-- ===== BUYER EXPERIENCE ===== -->
@@ -757,12 +741,41 @@
         </div>
       </div>
 
-      <div class="additional-info" style="margin-top: 24px;">
-        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Transaction identifiers</p>
-        <p class="additional-info-small">After a customer completes an ACH Direct Debit payment, the transaction appears on their bank statement. The statement entry shows your statement descriptor, which you can set on the PaymentIntent.</p>
-        <p class="additional-info-small" style="margin-top: 12px;">Use a clear, recognizable statement descriptor to help customers identify the payment and reduce the likelihood of disputes. The descriptor can be up to 10 characters for ACH payments.</p>
-      </div>
     </section>
+
+      <!-- ===== MANDATES (collapsible) ===== -->
+      <div class="collapsible-section" id="mandates" style="margin-bottom: 48px;">
+        <div class="collapsible-header" data-toggle="mandatesContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
+          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;"><path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Mandates</p>
+        </div>
+        <div class="collapsible-content" id="mandatesContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">To debit a customer's bank account with ACH, you must first obtain their authorization through a mandate. A mandate is a record of the permission that a customer gives you to debit their bank account.</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Stripe handles mandate collection as part of the payment flow when you use Checkout, Payment Links, or the Payment Element. The customer reviews the mandate terms and accepts them during the payment process. After the customer authorizes the mandate, Stripe sends a confirmation email to the customer per Nacha compliance requirements.</p>
+
+          <div style="margin-top: 16px;">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Mandate types</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">ACH supports both online and offline mandates:</p>
+            <ul style="list-style: disc; padding-left: 24px; margin-top: 4px;">
+              <li style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Online mandates — Collected digitally through your payment flow. Stripe manages these automatically when using Checkout, Payment Links, or the Payment Element.</li>
+              <li style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Offline mandates — Collected through paper forms or phone calls. If you collect mandates offline, you're responsible for storing the authorization and providing it if a dispute arises.</li>
+            </ul>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">For detailed information on mandate requirements, verification methods, and compliance considerations, see the <a href="https://docs.stripe.com/payments/ach-direct-debit/accept-a-payment" target="_blank" rel="noopener" style="color: #533afd;">Accept a payment</a> guide.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TRANSACTION IDENTIFIERS (collapsible) ===== -->
+      <div class="collapsible-section" style="margin-bottom: 48px;">
+        <div class="collapsible-header" data-toggle="txnIdContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
+          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;"><path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Transaction identifiers</p>
+        </div>
+        <div class="collapsible-content" id="txnIdContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">After a customer completes an ACH Direct Debit payment, the transaction appears on their bank statement. The statement entry shows your statement descriptor, which you can set on the PaymentIntent.</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Use a clear, recognizable statement descriptor to help customers identify the payment and reduce the likelihood of disputes. The descriptor can be up to 10 characters for ACH payments.</p>
+        </div>
+      </div>
 
     <!-- ===== GET STARTED ===== -->
     <section class="section" id="enable">

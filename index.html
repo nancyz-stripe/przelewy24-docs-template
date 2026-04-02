@@ -733,12 +733,18 @@
         </div>
       </div>
 
-      <div class="additional-info" style="margin-top: 24px;">
-        <p class="additional-info-title" style="font-size: 20px; line-height: 28px; letter-spacing: 0.3px;">Transaction identifiers</p>
-        <p class="additional-info-small">After a customer completes a Przelewy24 payment, the transaction appears on their bank statement. The statement entry includes a unique Przelewy24 reference number followed by your statement descriptor, in the format:</p>
-        <p class="additional-info-small" style="margin-top: 12px; font-family: monospace; padding-left: 8px;">/OPT/X/////P24-XXX-XXX-XXX {your statement descriptor}</p>
-        <p class="additional-info-small" style="margin-top: 12px;">You can set a custom statement descriptor of up to 14 characters on the PaymentIntent. If you don't set one, the descriptor defaults to "STRIPE POLAND."</p>
-        <p class="additional-info-small" style="margin-top: 12px;">The Przelewy24 reference number is available on the PaymentIntent under p24[reference]. You can share this with customers to help them locate the payment on their bank statement.</p>
+      <!-- Transaction identifiers collapsible -->
+      <div class="collapsible-section" style="margin-top: 24px;">
+        <div class="collapsible-header" data-toggle="txnIdContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
+          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;"><path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Transaction identifiers</p>
+        </div>
+        <div class="collapsible-content" id="txnIdContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">After a customer completes a Przelewy24 payment, the transaction appears on their bank statement. The statement entry includes a unique Przelewy24 reference number followed by your statement descriptor, in the format:</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px; font-family: monospace; padding-left: 8px;">/OPT/X/////P24-XXX-XXX-XXX {your statement descriptor}</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">You can set a custom statement descriptor of up to 14 characters on the PaymentIntent. If you don't set one, the descriptor defaults to "STRIPE POLAND."</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">The Przelewy24 reference number is available on the PaymentIntent under p24[reference]. You can share this with customers to help them locate the payment on their bank statement.</p>
+        </div>
       </div>
     </section>
 
