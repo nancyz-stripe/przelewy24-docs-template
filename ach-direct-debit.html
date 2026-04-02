@@ -332,7 +332,7 @@
       </table>
 
       <!-- Settlement and timing subsection -->
-      <h3 class="section-subtitle" style="margin-top: 24px; font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Settlement and timing</h3>
+      <h3 style="margin-top: 24px; font-size: 20px; font-weight: 700; color: #353a44; line-height: 28px; letter-spacing: 0.3px; margin-bottom: 8px;">Settlement and timing</h3>
       <p class="section-text">
         ACH Direct Debit is a delayed-notification payment method. After a customer authorizes a payment, it can take up to 4 business days to confirm whether the payment was successful.
       </p>
@@ -355,12 +355,12 @@
       </table>
 
       <div class="additional-info">
-        <p class="additional-info-subtitle">How settlement work</p>
+        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">How settlement work</p>
         <p class="additional-info-small">When a customer completes an ACH payment, the PaymentIntent status moves to processing. During this window, the bank can reject the debit for reasons such as insufficient funds, an invalid account, or a disabled account. If the payment succeeds, the status changes to succeeded. Because of the delayed confirmation, avoid fulfilling orders until the payment status reaches succeeded. If a payment fails after being initially accepted, Stripe removes the funds from your Stripe balance.</p>
       </div>
 
       <div class="additional-info">
-        <p class="additional-info-subtitle">Bank account verification</p>
+        <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Bank account verification</p>
         <p class="additional-info-small">Before debiting a customer's account, the bank account must be verified. Stripe supports two verification methods:</p>
         <ul class="additional-info-list" style="margin-top: 8px;">
           <li class="additional-info-small">Instant verification — Uses <a href="https://docs.stripe.com/financial-connections" target="_blank" rel="noopener">Financial Connections</a> to verify the account immediately. This is recommended as it reduces fraud and payment failures.</li>
@@ -641,7 +641,7 @@
         <p class="additional-info-small" style="margin-top: 12px;">Stripe handles mandate collection as part of the payment flow when you use Checkout, Payment Links, or the Payment Element. The customer reviews the mandate terms and accepts them during the payment process. After the customer authorizes the mandate, Stripe sends a confirmation email to the customer per Nacha compliance requirements.</p>
 
         <div class="additional-info">
-          <p class="additional-info-subtitle">Mandate types</p>
+          <p class="additional-info-subtitle" style="font-size: 16px; line-height: 24px; letter-spacing: -0.31px;">Mandate types</p>
           <p class="additional-info-small">ACH supports both online and offline mandates:</p>
           <ul class="additional-info-list" style="margin-top: 4px;">
             <li class="additional-info-small">Online mandates — Collected digitally through your payment flow. Stripe manages these automatically when using Checkout, Payment Links, or the Payment Element.</li>
