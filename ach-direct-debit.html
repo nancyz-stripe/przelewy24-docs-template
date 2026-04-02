@@ -416,7 +416,7 @@
         </tr>
         <tr>
           <td class="label-col">Business category</td>
-          <td class="value-col"><a href="#">View list of prohibited and restricted business categories</a></td>
+          <td class="value-col"><a href="#" id="openMccDialog">View list of prohibited and restricted business categories</a></td>
         </tr>
       </table>
 
@@ -771,6 +771,52 @@
   </aside>
 </div>
 
+<!-- ========================= MCC DIALOG ========================= -->
+<div class="mcc-overlay" id="mccOverlay">
+  <div class="mcc-dialog">
+    <div class="mcc-dialog-header">
+      <div class="mcc-dialog-header-top">
+        <div>
+          <div class="mcc-dialog-title">Prohibited and restricted MCCs</div>
+          <div class="mcc-dialog-subtitle">
+            Review the list of
+            <span class="mcc-glossary-wrapper" id="mccGlossaryWrapper">
+              <span class="mcc-glossary-link" id="mccGlossaryLink">merchant category codes</span>
+              <div class="mcc-tooltip" id="mccTooltip">Merchant category codes (MCCs) are used to classify businesses by the type of goods or services they provide. These codes are often used for calculating interchange fees, authorizing payments, and preventing fraud.</div>
+            </span>
+            that are prohibited or restricted for ACH Direct Debit.
+          </div>
+          <ul class="mcc-dialog-legend">
+            <li><strong>Prohibited</strong> MCCs are not supported by this payment method.</li>
+            <li><strong>Restricted</strong> MCCs may be supported, but require additional information at account creation.</li>
+          </ul>
+        </div>
+        <button class="mcc-dialog-close" id="mccCloseBtn" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5L15 15M15 5L5 15" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mcc-dialog-content">
+      <div class="mcc-col-headers">
+        <div class="mcc-col-header mcc-col-mcc">MCC</div>
+        <div class="mcc-col-header mcc-col-desc">DESCRIPTION</div>
+        <div class="mcc-col-header mcc-col-type">TYPE</div>
+      </div>
+      <div class="mcc-table-wrapper">
+        <div class="mcc-search-area">
+          <div class="mcc-search-input-wrap">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="#818da0" stroke-width="1.5"/><line x1="10.5" y1="10.5" x2="14" y2="14" stroke="#818da0" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <input type="text" class="mcc-search-input" id="mccSearchInput" placeholder="Enter merchant category code (MCCs)">
+          </div>
+        </div>
+        <div class="mcc-rows" id="mccRows">
+          <!-- Rows injected by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   // Overflow menu
   const btn = document.getElementById('overflowMenuBtn');
@@ -813,6 +859,82 @@
     link.addEventListener('mouseleave', hide);
     tip.addEventListener('mouseenter', show);
     tip.addEventListener('mouseleave', hide);
+  });
+
+  // MCC Dialog
+  var mccData = [
+    { mcc: '5962', desc: 'Direct marketing - travel-related arrangement services', type: 'Prohibited' },
+    { mcc: '5966', desc: 'Direct marketing - outbound telemarketing', type: 'Prohibited' },
+    { mcc: '5967', desc: 'Direct marketing - inbound telemarketing', type: 'Prohibited' },
+    { mcc: '6010', desc: 'Manual cash disbursements / Financial institutions', type: 'Prohibited' },
+    { mcc: '6011', desc: 'Automated cash disbursements', type: 'Prohibited' },
+    { mcc: '6012', desc: 'Financial institutions - merchandise, services and debt', type: 'Prohibited' },
+    { mcc: '6051', desc: 'Non-financial institutions - foreign currency, money orders, travelers cheques', type: 'Prohibited' },
+    { mcc: '6211', desc: 'Security brokers/dealers', type: 'Restricted' },
+    { mcc: '6300', desc: 'Insurance underwriting, premiums', type: 'Restricted' },
+    { mcc: '7273', desc: 'Dating and escort services', type: 'Prohibited' },
+    { mcc: '7297', desc: 'Massage parlors', type: 'Prohibited' },
+    { mcc: '7800', desc: 'Government-owned lotteries', type: 'Prohibited' },
+    { mcc: '7801', desc: 'Government-licensed online casinos (online gambling)', type: 'Prohibited' },
+    { mcc: '7802', desc: 'Government-licensed horse/dog racing', type: 'Prohibited' },
+    { mcc: '7995', desc: 'Betting, casino gambling, lottery tickets, poker and off-track betting', type: 'Prohibited' },
+    { mcc: '9211', desc: 'Court costs, including alimony and child support', type: 'Prohibited' },
+    { mcc: '9222', desc: 'Fines', type: 'Prohibited' },
+    { mcc: '9223', desc: 'Bail and bond payments', type: 'Prohibited' },
+  ];
+
+  var overlay = document.getElementById('mccOverlay');
+  var closeBtn = document.getElementById('mccCloseBtn');
+  var openLink = document.getElementById('openMccDialog');
+  var searchInput = document.getElementById('mccSearchInput');
+  var rowsContainer = document.getElementById('mccRows');
+
+  function renderRows(filter) {
+    var q = (filter || '').toLowerCase();
+    var filtered = mccData.filter(function (item) {
+      return item.mcc.indexOf(q) !== -1 ||
+             item.desc.toLowerCase().indexOf(q) !== -1 ||
+             item.type.toLowerCase().indexOf(q) !== -1;
+    });
+    if (filtered.length === 0) {
+      rowsContainer.innerHTML = '<div class="mcc-no-results">No matching merchant category codes found.</div>';
+      return;
+    }
+    var html = '';
+    filtered.forEach(function (item) {
+      html += '<div class="mcc-row">' +
+        '<div class="mcc-cell mcc-cell-mcc">' + item.mcc + '</div>' +
+        '<div class="mcc-cell mcc-cell-desc">' + item.desc + '</div>' +
+        '<div class="mcc-cell mcc-cell-type">' + item.type + '</div>' +
+      '</div>';
+    });
+    rowsContainer.innerHTML = html;
+  }
+
+  openLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    searchInput.value = '';
+    renderRows('');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    searchInput.focus();
+  });
+
+  function closeDialog() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeDialog);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeDialog();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeDialog();
+  });
+
+  searchInput.addEventListener('input', function () {
+    renderRows(this.value);
   });
 
   // Payment flow tabs
