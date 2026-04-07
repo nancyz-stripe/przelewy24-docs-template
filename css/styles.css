@@ -1289,6 +1289,69 @@ ul {
    Breakpoint: when sidebar + content + right rail no longer fit
    250 (sidebar) + 43 (pad) + 692 (content) + ~200 (right) = ~1185
    =========================== */
+/* ===========================
+   Page Footer Links
+   =========================== */
+.page-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 16px;
+  padding-bottom: 48px;
+}
+
+.page-footer-divider {
+  border-top: 1px solid #d4dee9;
+}
+
+.page-footer-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-footer-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #1a2c44;
+}
+
+.page-footer-item svg {
+  flex-shrink: 0;
+}
+
+.page-footer-item a {
+  color: #533afd;
+  text-decoration: none;
+}
+
+.page-footer-item a:hover {
+  text-decoration: underline;
+}
+
+.page-footer-powered {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #1a2c44;
+}
+
+.page-footer-powered a {
+  color: #533afd;
+  text-decoration: none;
+}
+
+.page-footer-powered a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 1200px) {
   .right-sidebar {
     display: none;
