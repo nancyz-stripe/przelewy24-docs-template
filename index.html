@@ -1140,10 +1140,11 @@ Payment captures
     renderRows(this.value);
   });
 
-  // Glossary tooltips — stay visible when hovering on the tooltip itself
+  // Glossary tooltips — only stay open on hover if tooltip contains links
   document.querySelectorAll('.mcc-glossary-wrapper').forEach(function (wrapper) {
     var link = wrapper.querySelector('.mcc-glossary-link');
     var tip = wrapper.querySelector('.mcc-tooltip');
+    var hasLinks = tip.querySelector('a') !== null;
     var hideTimeout;
 
     function show() {
@@ -1151,15 +1152,20 @@ Payment captures
       tip.classList.add('visible');
     }
     function hide() {
+      tip.classList.remove('visible');
+    }
+    function hideDelayed() {
       hideTimeout = setTimeout(function () {
         tip.classList.remove('visible');
       }, 100);
     }
 
     link.addEventListener('mouseenter', show);
-    link.addEventListener('mouseleave', hide);
-    tip.addEventListener('mouseenter', show);
-    tip.addEventListener('mouseleave', hide);
+    link.addEventListener('mouseleave', hasLinks ? hideDelayed : hide);
+    if (hasLinks) {
+      tip.addEventListener('mouseenter', show);
+      tip.addEventListener('mouseleave', hideDelayed);
+    }
   });
 
   // Payment flow tabs
