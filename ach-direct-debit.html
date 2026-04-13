@@ -1139,7 +1139,11 @@ Payment captures
         }
       }
       navLinks.forEach(function (l) { l.classList.remove('active'); });
-      if (current) current.link.classList.add('active');
+      if (current) {
+        current.link.classList.add('active');
+      } else if (sections.length) {
+        sections[0].link.classList.add('active');
+      }
     }
 
     window.addEventListener('scroll', updateActive);
