@@ -577,13 +577,10 @@ Payment captures
         </tr>
       </table>
 
-      <!-- Refunds collapsible -->
-      <div class="collapsible-section" id="refunds-info" style="margin-top: 24px;">
-        <div class="collapsible-header" data-toggle="refundsContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
-          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;"><path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <p style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Refunds</p>
-        </div>
-        <div class="collapsible-content" id="refundsContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+      <!-- Refunds -->
+      <div id="refunds-info" style="margin-top: 24px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0 0 8px 0;">Refunds</h3>
+        <div style="color: #1a2c44;">
           <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Przelewy24 supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge. Refunds are merchant-initiated, which means your refund policy governs when customers are eligible for a refund. You have up to 180 days from the original payment to submit a refund through Stripe.</p>
 
           <div style="margin-top: 16px;">
@@ -604,13 +601,10 @@ Payment captures
         </div>
       </div>
 
-      <!-- Disputes collapsible -->
-      <div class="collapsible-section" id="disputes-info" style="margin-top: 24px;">
-        <div class="collapsible-header" data-toggle="disputesContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
-          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;"><path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <p style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Disputes</p>
-        </div>
-        <div class="collapsible-content" id="disputesContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+      <!-- Disputes -->
+      <div id="disputes-info" style="margin-top: 24px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0 0 8px 0;">Disputes</h3>
+        <div style="color: #1a2c44;">
           <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Przelewy24 requires customers to authenticate payments directly with their bank, which significantly reduces the risk of fraud and unrecognized transactions. As a result, P24 doesn't support the standard dispute process—customers can't file a chargeback through their bank, and funds are never withdrawn from your Stripe balance due to a dispute.</p>
           <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">If a customer contacts their bank about a Przelewy24 payment, the bank directs them back to you. You can issue a full or partial refund if appropriate.</p>
         </div>
@@ -792,13 +786,10 @@ Payment captures
         </div>
       </div>
 
-      <!-- Transaction identifiers collapsible -->
-      <div class="collapsible-section" style="margin-top: 24px;">
-        <div class="collapsible-header" data-toggle="txnIdContent" style="display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none;">
-          <svg class="collapsible-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink: 0; transition: transform 0.2s ease;"><path d="M6 4L10 8L6 12" stroke="#474e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <p style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0;">Transaction identifiers</p>
-        </div>
-        <div class="collapsible-content" id="txnIdContent" style="display: none; padding-left: 32px; margin-top: 8px; color: #1a2c44;">
+      <!-- Transaction identifiers -->
+      <div style="margin-top: 24px;">
+        <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0 0 8px 0;">Transaction identifiers</h3>
+        <div style="color: #1a2c44;">
           <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">After a customer completes a Przelewy24 payment, the transaction appears on their bank statement. The statement entry includes a unique Przelewy24 reference number followed by your statement descriptor, in the format:</p>
           <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px; font-family: monospace; padding-left: 8px;">/OPT/X/////P24-XXX-XXX-XXX {your statement descriptor}</p>
           <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">You can set a custom statement descriptor of up to 14 characters on the PaymentIntent. If you don't set one, the descriptor defaults to "STRIPE POLAND."</p>
@@ -1184,18 +1175,6 @@ Payment captures
         flowMobileLayout.style.display = '';
         flowDesktopLayout.style.display = 'none';
       }
-    });
-  });
-
-  // Collapsible sections
-  document.querySelectorAll('.collapsible-header').forEach(function (header) {
-    header.addEventListener('click', function () {
-      var targetId = header.getAttribute('data-toggle');
-      var content = document.getElementById(targetId);
-      var chevron = header.querySelector('.collapsible-chevron');
-      var isOpen = content.style.display !== 'none';
-      content.style.display = isOpen ? 'none' : 'block';
-      chevron.style.transform = isOpen ? '' : 'rotate(90deg)';
     });
   });
 
