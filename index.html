@@ -1199,6 +1199,33 @@ Payment captures
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && locOverlay.classList.contains('open')) closeLocDialog();
   });
+
+  // Right sidebar scroll spy
+  (function () {
+    var navLinks = document.querySelectorAll('.right-sidebar a[href^="#"]');
+    var sections = [];
+    navLinks.forEach(function (link) {
+      var id = link.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) sections.push({ id: id, el: el, link: link });
+    });
+
+    function updateActive() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var offset = 120;
+      var current = null;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].el.getBoundingClientRect().top + scrollY - offset <= scrollY) {
+          current = sections[i];
+        }
+      }
+      navLinks.forEach(function (l) { l.classList.remove('active'); });
+      if (current) current.link.classList.add('active');
+    }
+
+    window.addEventListener('scroll', updateActive);
+    updateActive();
+  })();
 </script>
 </body>
 </html>

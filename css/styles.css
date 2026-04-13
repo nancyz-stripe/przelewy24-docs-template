@@ -885,6 +885,10 @@ ul {
   color: #353a44;
   text-decoration: none;
 }
+.right-sidebar a.active {
+  color: #533afd;
+  font-weight: 500;
+}
 
 /* ===========================
    Subsection spacing helpers
