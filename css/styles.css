@@ -252,6 +252,10 @@ ul {
   font-weight: 600;
   color: #353a44;
 }
+.sidebar-item.level-2.active {
+  color: #533afd;
+  font-weight: 600;
+}
 .sidebar-item.nav-bold {
   font-weight: 500;
   color: #353a44;
