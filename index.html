@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Przelewy24 payments | Stripe Documentation</title>
+  <title>Przelewy24 (P24) payments | Stripe Documentation</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/icons.css">
 </head>
@@ -270,21 +270,21 @@
           <a href="#eligibility" class="overflow-popover-item">Eligibility and availability</a>
           <a href="#capabilities" class="overflow-popover-item">Capabilities</a>
           <a href="#stripe-support" class="overflow-popover-item">Stripe product support</a>
-          <a href="#payment-flow" class="overflow-popover-item">Payment flow</a>
+          <a href="#payment-flow" class="overflow-popover-item">Buyer experience</a>
           <a href="#get-started" class="overflow-popover-item">Enable Przelewy24</a>
         </div>
       </div>
     </div>
 
     <!-- Page Title -->
-    <h1 class="page-title">Przelewy24 payments</h1>
+    <h1 class="page-title">Przelewy24 (P24) payments</h1>
     <p class="page-subtitle">Allow your Poland-based customers to pay via bank redirect.</p>
 
     <!-- ===== OVERVIEW ===== -->
     <section class="section" id="overview">
       <h2 class="section-title">Overview</h2>
       <p class="section-text">
-        Przelewy24 is a Poland-based payment method aggregator that allows customers to complete transactions online using bank transfers and other methods. Przelewy24 provides a way for customers to pay with over 165 banks.
+        P24 is a payment method in Poland that allows customers to pay through bank transfers. Customers select their bank, authenticate the payment, and return to your site.
       </p>
 
       <table class="feature-table">
@@ -336,7 +336,7 @@
 
       <!-- Account eligibility -->
       <h3 class="section-subtitle">Account eligibility</h3>
-      <p class="section-text">Stripe accounts with the following properties can accept Przelewy24 payments.</p>
+      <p class="section-text">Stripe accounts with the following properties can accept P24 payments.</p>
 
       <table class="feature-table">
         <tr>
@@ -394,20 +394,20 @@
       </table>
 
       <div class="additional-info">
-        <p class="additional-info-text">PayPro, the provider behind Przelewy24 may review your account after activation to confirm eligibility. In addition to meeting the criteria above, your Stripe-linked website must have:</p>
+        <p class="additional-info-text">PPro, the provider behind P24, may review your account after activation to confirm eligibility. In addition to meeting the criteria above, your website must have:</p>
         <ul class="additional-info-list">
           <li>A Terms and Conditions page with your refund policy, privacy policy, and company details</li>
           <li>An About Us page with your Tax ID or VAT number, company address, and product descriptions with pricing</li>
         </ul>
-        <p class="additional-info-text" style="margin-top: 12px;">These must appear on dedicated pages — PayPro doesn't accept details placed only in a site footer.</p>
-        <p class="additional-info-text" style="margin-top: 12px;">PayPro has the right to suspend or terminate your use of Przelewy24 for breaching the prohibited business categories or failing to meet the requirements listed above.</p>
-        <p class="additional-info-text" style="margin-top: 12px;">If your account is suspended, check your <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> or the p24_payments <a href="https://docs.stripe.com/api/capabilities/object" target="_blank" rel="noopener">capability object</a> for the specific reason. For suspensions related to missing website information, update your site and contact <a href="https://support.stripe.com" target="_blank" rel="noopener">Stripe support</a> to request a re-review.</p>
+        <p class="additional-info-text" style="margin-top: 12px;">These must appear on dedicated pages—PPro doesn't accept details placed only in a site footer.</p>
+        <p class="additional-info-text" style="margin-top: 12px;">PPro can suspend or terminate your access to P24 if you breach the prohibited business categories or fail to meet the requirements above.</p>
+        <p class="additional-info-text" style="margin-top: 12px;">If PPro suspends your account, check the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener">Dashboard</a> or the p24_payments <a href="https://docs.stripe.com/api/capabilities/object" target="_blank" rel="noopener">capability object</a> for the specific reason. For suspensions related to missing website information, update your site and contact <a href="https://support.stripe.com" target="_blank" rel="noopener">Stripe support</a> to request a re-review.</p>
       </div>
 
       <!-- Payment support -->
       <div class="mt-32">
         <h3 class="section-subtitle">Payment support</h3>
-        <p class="section-text">Payments with the following properties are supported by Przelewy24.</p>
+        <p class="section-text">P24 supports payments with the following properties.</p>
 
         <table class="feature-table">
           <tr>
@@ -456,7 +456,7 @@
     <!-- ===== CAPABILITIES ===== -->
     <section class="section" id="capabilities">
       <h2 class="section-title">Capabilities</h2>
-      <p class="section-text">View the breakdown of payment capabilities for this payment method.</p>
+      <p class="section-text"></p>
 
       <table class="feature-table">
         <tr>
@@ -557,7 +557,7 @@ Payment captures
               Full refunds
             </div>
             <div class="table-separator"></div>
-            <div class="table-detail">Filing window: 180 days</div>
+            <div class="table-detail">Submission window: 180 days</div>
           </td>
         </tr>
         <tr>
@@ -579,33 +579,7 @@ Payment captures
       <div id="refunds-info" style="margin-top: 24px;">
         <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0 0 8px 0;">Refunds</h3>
         <div style="color: #1a2c44;">
-          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Przelewy24 supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge.</p>
-
-          <div style="margin-top: 16px;">
-            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Refund window and processing time</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">You have up to 180 days from the original payment to submit a refund through Stripe. Your return policy takes precedence — the 180-day window is the maximum allowed by the payment method, not a guarantee to your customers.</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Refunds typically take 5–10 business days to appear in the customer's bank account. Refunds issued shortly after the original charge may appear as a reversal, where the original charge drops off the customer's statement rather than showing as a separate credit.</p>
-          </div>
-
-          <div style="margin-top: 16px;">
-            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Issuing a refund</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Submit refunds using the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener" style="color: #533afd;">Dashboard</a> or the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener" style="color: #533afd;">Refunds API</a>. When you submit a refund, Stripe sends the request through the Przelewy24 network to the customer's bank. The bank credits the refund to the customer's original bank account.</p>
-          </div>
-
-          <div style="margin-top: 16px;">
-            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Canceling a refund</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">You can't cancel a Przelewy24 refund after you submit it.</p>
-          </div>
-
-          <div style="margin-top: 16px;">
-            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Tracking refund status</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">In the Dashboard, filter the <a href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener" style="color: #533afd;">Payments</a> page by <a href="#" style="color: #533afd;">refunded</a>, <a href="#" style="color: #533afd;">refund_pending</a>, or <a href="#" style="color: #533afd;">partially_refunded</a> to view refund details. Programmatically, retrieve refund status through the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener" style="color: #533afd;">Refunds API</a> or listen for <a href="#" style="color: #533afd;">refund.updated</a> and <a href="#" style="color: #533afd;">refund.failed</a> webhook events.</p>
-          </div>
-
-          <div style="margin-top: 16px;">
-            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Refund notifications</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Stripe sends <a href="#" style="color: #533afd;">refund.created</a> and <a href="#" style="color: #533afd;">charge.refunded</a> webhook events when a refund is issued, and refund.updated when the status changes. If a refund fails, Stripe sends a <a href="#" style="color: #533afd;">refund.failed</a> event — in that case, you must return funds to the customer outside of Stripe.</p>
-          </div>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">You have up to 180 days from the original payment to submit a refund through Stripe. Your return policy takes precedence—the 180-day window is the maximum allowed by the payment method, not a required offering to your customers. Customers receive P24 refunds in PLN, regardless of the original payment currency. The refunded amount might differ from the original amount due to currency conversion. For refund submission and tracing details, see <a href="#" style="color: #533afd;">placeholder for PPRO refunds page</a>.</p>
         </div>
       </div>
 
@@ -613,8 +587,8 @@ Payment captures
       <div id="disputes-info" style="margin-top: 24px;">
         <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0 0 8px 0;">Disputes</h3>
         <div style="color: #1a2c44;">
-          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Przelewy24 requires customers to authenticate payments directly with their bank, which significantly reduces the risk of fraud and unrecognized transactions. As a result, P24 doesn't support the standard dispute process—customers can't file a chargeback through their bank, and funds are never withdrawn from your Stripe balance due to a dispute.</p>
-          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">If a customer contacts their bank about a Przelewy24 payment, the bank directs them back to you. You can issue a full or partial refund if appropriate.</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">P24 requires customers to authenticate payments directly with their bank, which reduces the risk of fraud and unrecognized transactions. As a result, P24 doesn't support the standard dispute process—customers can't file a chargeback through their bank, and funds are never withdrawn from your Stripe balance due to a dispute.</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">If a customer contacts their bank about a P24 payment, the bank directs them back to you. You can then issue a full or partial refund.</p>
         </div>
       </div>
     </section>
@@ -622,7 +596,7 @@ Payment captures
     <!-- ===== STRIPE PRODUCT SUPPORT ===== -->
     <section class="section" id="stripe-support">
       <h2 class="section-title">Stripe product support</h2>
-      <p class="section-text">View the breakdown of supported Stripe products for this payment method.</p>
+      <p class="section-text"></p>
 
       <table class="feature-table">
         <tr>
@@ -687,7 +661,7 @@ Payment captures
             </div>
             <div class="check-item">
               <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-              PaymentIntents with setup_future_usage
+              PaymentIntents with setup_future_usage <sup style="color:#687385; font-size:11px;">2</sup>
             </div>
             <div class="check-item">
               <div class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -702,14 +676,14 @@ Payment captures
       </table>
 
       <div class="footnotes">
-        <sup>1</sup> Not supported when using Checkout in subscription mode.<br>
-        <sup>2</sup> Not supported when using Checkout in setup mode.
+        <sup>1</sup> Only supported in payment mode.<br>
+        <sup>2</sup> Only supported when collecting payment details at the time of creating a Payment Intent.
       </div>
     </section>
 
-    <!-- ===== PAYMENT FLOW ===== -->
+    <!-- ===== BUYER EXPERIENCE ===== -->
     <section class="section" id="payment-flow">
-      <h2 class="section-title">Payment flow</h2>
+      <h2 class="section-title">Buyer experience</h2>
 
       <div class="tabs">
         <div class="tab active" data-tab="mobile">Mobile</div>
@@ -724,14 +698,14 @@ Payment captures
               <div class="step-counter">1</div>
               <span class="payment-flow-step-title">Select payment method</span>
             </div>
-            <p class="payment-flow-step-text">Customer selects Przelewy24 at checkout and selects corresponding bank.</p>
+            <p class="payment-flow-step-text">Customer selects P24 at checkout and selects corresponding bank.</p>
           </div>
           <div class="payment-flow-step">
             <div class="payment-flow-step-header">
               <div class="step-counter">2</div>
-              <span class="payment-flow-step-title">Redirect to Przelewy24</span>
+              <span class="payment-flow-step-title">Redirect to P24</span>
             </div>
-            <p class="payment-flow-step-text">Customer is redirected to Przelewy24 and is asked to enter account credentials to completes authorization process.</p>
+            <p class="payment-flow-step-text">Customer is redirected to P24 and is asked to enter account credentials to completes authorization process.</p>
           </div>
           <div class="payment-flow-step">
             <div class="payment-flow-step-header">
@@ -768,14 +742,14 @@ Payment captures
               <div class="step-counter">1</div>
               <span class="payment-flow-step-title">Select payment method</span>
             </div>
-            <p class="payment-flow-step-text">Customer selects Przelewy24 at checkout and selects corresponding bank.</p>
+            <p class="payment-flow-step-text">Customer selects P24 at checkout and selects corresponding bank.</p>
           </div>
           <div class="payment-flow-step">
             <div class="payment-flow-step-header">
               <div class="step-counter">2</div>
-              <span class="payment-flow-step-title">Redirect to Przelewy24</span>
+              <span class="payment-flow-step-title">Redirect to P24</span>
             </div>
-            <p class="payment-flow-step-text">Customer is redirected to Przelewy24 and is asked to enter account credentials to completes authorization process.</p>
+            <p class="payment-flow-step-text">Customer is redirected to P24 and is asked to enter account credentials to completes authorization process.</p>
           </div>
           <div class="payment-flow-step">
             <div class="payment-flow-step-header">
@@ -798,10 +772,10 @@ Payment captures
       <div style="margin-top: 24px;">
         <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0 0 8px 0;">Transaction identifiers</h3>
         <div style="color: #1a2c44;">
-          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">After a customer completes a Przelewy24 payment, the transaction appears on their bank statement. The statement entry includes a unique Przelewy24 reference number followed by your statement descriptor, in the format:</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">After a customer completes a P24 payment, the transaction appears on their bank statement. The statement entry includes a unique P24 reference number followed by your statement descriptor, in the format:</p>
           <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px; font-family: monospace; padding-left: 8px;">/OPT/X/////P24-XXX-XXX-XXX {your statement descriptor}</p>
-          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">You can set a custom statement descriptor of up to 14 characters on the PaymentIntent. If you don't set one, the descriptor defaults to "STRIPE POLAND."</p>
-          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">The Przelewy24 reference number is available on the PaymentIntent under p24[reference]. You can share this with customers to help them locate the payment on their bank statement.</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Set a custom statement descriptor on the PaymentIntent before confirming the payment. P24 limits statement descriptors to 14 characters. If you don't set one, the descriptor defaults to STRIPE POLAND.</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">After the payment completes, expand latest_charge on the PaymentIntent to retrieve the P24 reference number from latest_charge.payment_method_details.p24.reference. Share it with customers to help them locate the payment on their bank statement.</p>
         </div>
       </div>
     </section>
@@ -862,7 +836,7 @@ Payment captures
     <a href="#eligibility">Eligibility and availability</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#stripe-support">Stripe product support</a>
-    <a href="#payment-flow">Payment flow</a>
+    <a href="#payment-flow">Buyer experience</a>
     <a href="#get-started">Enable Przelewy24</a>
   </aside>
 </div>
