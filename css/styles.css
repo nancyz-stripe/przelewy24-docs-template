@@ -837,10 +837,10 @@ ul {
   text-decoration: underline;
 }
 .additional-info-text {
-  font-size: 16px;
-  color: #596171;
-  line-height: 24px;
-  letter-spacing: -0.31px;
+  font-size: 14px;
+  color: #1a2c44;
+  line-height: 20px;
+  letter-spacing: -0.15px;
 }
 .additional-info-list {
   list-style: disc;
@@ -848,10 +848,10 @@ ul {
   margin: 0;
 }
 .additional-info-list li {
-  font-size: 16px;
-  color: #596171;
-  line-height: 24px;
-  letter-spacing: -0.31px;
+  font-size: 14px;
+  color: #1a2c44;
+  line-height: 20px;
+  letter-spacing: -0.15px;
 }
 
 /* ===========================
