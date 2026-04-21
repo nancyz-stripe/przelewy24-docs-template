@@ -645,22 +645,23 @@ ul {
 }
 .payment-flow-step-text {
   font-size: 16px;
-  color: #687385;
+  color: #1a2c44;
   line-height: 24px;
+  letter-spacing: -0.31px;
 }
 
 .step-counter {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #635bff;
-  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: #d8dee4;
+  color: #1a2c44;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
   flex-shrink: 0;
+  line-height: 16px;
 }
 
 .payment-flow-image {
