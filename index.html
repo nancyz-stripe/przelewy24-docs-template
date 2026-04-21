@@ -407,7 +407,7 @@
       <!-- Payment support -->
       <div class="mt-32">
         <h3 class="section-subtitle">Payment support</h3>
-        <p class="section-text">View the customer-facing details for accepting this payment method.</p>
+        <p class="section-text">Payments with the following properties are supported by Przelewy24.</p>
 
         <table class="feature-table">
           <tr>
@@ -579,22 +579,32 @@ Payment captures
       <div id="refunds-info" style="margin-top: 24px;">
         <h3 style="font-size: 20px; font-weight: 700; color: #1a2c44; line-height: 28px; letter-spacing: 0.3px; margin: 0 0 8px 0;">Refunds</h3>
         <div style="color: #1a2c44;">
-          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Przelewy24 supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge. Refunds are merchant-initiated, which means your refund policy governs when customers are eligible for a refund. You have up to 180 days from the original payment to submit a refund through Stripe.</p>
+          <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Przelewy24 supports full and partial refunds, and you can issue multiple refunds against a single payment as long as the total refunded amount doesn't exceed the original charge.</p>
 
           <div style="margin-top: 16px;">
-            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">How refunds work</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Submit refunds using the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener" style="color: #533afd;">Dashboard</a> or the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener" style="color: #533afd;">Refunds API</a>. When you submit a refund, Stripe sends the request through the Przelewy24 network to the customer's bank. The bank credits the refund to the customer's original bank account. You can't cancel a P24 refund after you submit it.</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Refunds typically take 5–10 business days to appear on the customer's bank statement. Depending on when you issue the refund, it appears on the customer's statement as either a reversal or a credit. Refunds issued shortly after the original payment might appear as a reversal—the original charge drops off the statement entirely. Later refunds appear as a separate credit.</p>
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Refund window and processing time</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">You have up to 180 days from the original payment to submit a refund through Stripe. Your return policy takes precedence — the 180-day window is the maximum allowed by the payment method, not a guarantee to your customers.</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Refunds typically take 5–10 business days to appear in the customer's bank account. Refunds issued shortly after the original charge may appear as a reversal, where the original charge drops off the customer's statement rather than showing as a separate credit.</p>
           </div>
 
           <div style="margin-top: 16px;">
-            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Track refund status</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Check the status of a refund in the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener" style="color: #533afd;">Dashboard</a> on the payment details page, or through the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener" style="color: #533afd;">Refunds API</a>. Refunds can remain in a pending state while the bank processes the request.</p>
-            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px; margin-top: 12px;">Stripe sends webhook events for refund status changes:</p>
-            <ul style="list-style: disc; padding-left: 24px; margin-top: 4px;">
-              <li style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">refund.updated — The refund succeeded or its status changed.</li>
-              <li style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">refund.failed — The refund failed. Check the failure_reason field on the <a href="https://docs.stripe.com/api/refunds/object" target="_blank" rel="noopener" style="color: #533afd;">Refund</a> object for details.</li>
-            </ul>
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Issuing a refund</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Submit refunds using the <a href="https://dashboard.stripe.com" target="_blank" rel="noopener" style="color: #533afd;">Dashboard</a> or the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener" style="color: #533afd;">Refunds API</a>. When you submit a refund, Stripe sends the request through the Przelewy24 network to the customer's bank. The bank credits the refund to the customer's original bank account.</p>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Canceling a refund</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">You can't cancel a Przelewy24 refund after you submit it.</p>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Tracking refund status</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">In the Dashboard, filter the <a href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener" style="color: #533afd;">Payments</a> page by <a href="#" style="color: #533afd;">refunded</a>, <a href="#" style="color: #533afd;">refund_pending</a>, or <a href="#" style="color: #533afd;">partially_refunded</a> to view refund details. Programmatically, retrieve refund status through the <a href="https://docs.stripe.com/api/refunds" target="_blank" rel="noopener" style="color: #533afd;">Refunds API</a> or listen for <a href="#" style="color: #533afd;">refund.updated</a> and <a href="#" style="color: #533afd;">refund.failed</a> webhook events.</p>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <p style="font-size: 16px; font-weight: 700; color: #1a2c44; line-height: 24px; letter-spacing: -0.31px; margin-bottom: 8px;">Refund notifications</p>
+            <p style="font-size: 14px; color: #1a2c44; line-height: 20px; letter-spacing: -0.15px;">Stripe sends <a href="#" style="color: #533afd;">refund.created</a> and <a href="#" style="color: #533afd;">charge.refunded</a> webhook events when a refund is issued, and refund.updated when the status changes. If a refund fails, Stripe sends a <a href="#" style="color: #533afd;">refund.failed</a> event — in that case, you must return funds to the customer outside of Stripe.</p>
           </div>
         </div>
       </div>
