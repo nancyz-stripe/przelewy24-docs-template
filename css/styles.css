@@ -838,10 +838,10 @@ ul {
   text-decoration: underline;
 }
 .additional-info-text {
-  font-size: 14px;
+  font-size: 16px;
   color: #1a2c44;
-  line-height: 20px;
-  letter-spacing: -0.15px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
 }
 .additional-info-list {
   list-style: disc;
@@ -849,10 +849,10 @@ ul {
   margin: 0;
 }
 .additional-info-list li {
-  font-size: 14px;
+  font-size: 16px;
   color: #1a2c44;
-  line-height: 20px;
-  letter-spacing: -0.15px;
+  line-height: 24px;
+  letter-spacing: -0.31px;
 }
 
 /* ===========================
